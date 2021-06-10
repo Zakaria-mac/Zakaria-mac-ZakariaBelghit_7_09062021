@@ -1,0 +1,12 @@
+.gpm_banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+  
+};
+.gpm_logo{
+    width: 250px;
+    height: 250px;
+}
