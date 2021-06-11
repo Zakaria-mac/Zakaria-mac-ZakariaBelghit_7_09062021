@@ -1,0 +1,26 @@
+.gpm_footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    padding: 32px;
+}
+.gpm_footer_logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.footer_logo{
+    width: 250px;
+    margin-top: -55px;
+    padding: 0;
+}
+.gpm_contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -85px;
+}

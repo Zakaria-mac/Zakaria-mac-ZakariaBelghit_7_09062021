@@ -1,12 +1,41 @@
 .gpm_banner{
     display: flex;
     flex-direction: row;
+    height: 150px;
+    padding: 32px;
     justify-content: space-between;
     align-items: center;
-    height: 200px;
-  
-};
+    background-image:url(../assets/background_banner.png);
+}
+.row_banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
 .gpm_logo{
     width: 250px;
-    height: 250px;
+    margin-top: -55px;
+    padding: 0;
+}
+.gpm_title{
+    color: white;
+    font-size: x-large;
+    margin-top: -55px;
+    padding: 0;
+}
+.nav_banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav_inscription{
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
+}
+.nav_connexion{
+    text-decoration: none;
+    color: white;
 }
