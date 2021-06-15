@@ -1,16 +1,34 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import React, { useState } from 'react';
+import { useRoutes } from 'hookrouter'
 import '../styles/App.css';
 
-import Banner from './Banner'
-import Footer from './Footer'
+import Signup from '../pages/Signup';
+import CreateAccount from './CreateAccount';
+import Login from '../pages/Login';
+import Home from '../pages/Home'
+import ForumSpace from '../pages/ForumSpace'
+import Profile from '../pages/Profile'
 
-function App(){
-
-  return  <div>
-            <Banner />
-            <Footer />
-          </div>
+const routes = {
+  '/':()=> <Home />,
+  '/signup':() => <Signup />,
+  // '/signup':() => <Profile /> DIRECTION SINGUP - PROFILE ? 
+  '/signup/profile':() => <Profile />,
+  '/login':() => <Login />,
+  '/login/forumSpace':()=> <ForumSpace />,
+  '/login/profile':()=> <Profile />
 }
 
-export default App;
+
+function App(){
+    const [userName, setUserName]=useState([])
+    const [password, setPassword]=useState([])
+
+    const match = useRoutes(routes)
+
+    return  <div>
+              { match }
+            </div>
+}
+
+export default App

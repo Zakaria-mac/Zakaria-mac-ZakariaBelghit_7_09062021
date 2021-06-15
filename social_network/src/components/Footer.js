@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState } from 'react'
 import '../styles/Footer.css'
 import logo_black from '../assets/logo_black.png'
 
 function Footer(){
 
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue]=useState('')
 
     function handleInput(e) {
         setInputValue(e.target.value)
@@ -30,6 +30,7 @@ function Footer(){
                 <p>Un problème ? Le support technique vous aide !</p> 
 
                 <input
+                    type='email'
                     placeholder="Entrez votre email pro."
                     onChange={handleInput}
                     value={inputValue}

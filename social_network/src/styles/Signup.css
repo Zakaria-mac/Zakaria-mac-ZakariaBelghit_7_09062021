@@ -1,28 +1,25 @@
-.gpm_footer{
+.form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    margin-top: 70px;
-    padding: 32px;
-    border-top: solid 1px black;
 }
-.gpm_footer_logo{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-.footer_logo{
-    width: 250px;
-    margin-top: -55px;
-    padding: 0;
-}
-.gpm_contact{
+
+.user_Name{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -85px;
+    margin-top: 50px;
+}
+.password{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.btn_signup{
+    display: flex;
+    justify-content: center;
 }
