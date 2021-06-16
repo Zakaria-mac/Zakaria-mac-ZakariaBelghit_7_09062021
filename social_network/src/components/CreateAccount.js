@@ -24,7 +24,7 @@ function CreateAccount(){
     }
 
     function handleSubmit(){
-        <A href='/signup/profile'></A>
+        <A href='/login/profile'></A>
     }
 
     return (

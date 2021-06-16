@@ -14,7 +14,7 @@ function Header() {
                 <div className='header'>
                     
                     <div className='banner'>
-                        <A href='/login/forumSpace'>
+                        <A href='/login/forumspace'>
                             <img src={logo_white} className='logo' alt='Logo de Groupomania' title='Logo de Groupomania'></img>
                         </A>
                     </div>
@@ -32,7 +32,7 @@ function Header() {
                     <nav className='navigation_banner'>
                         <ul className='navigation_choices'>
                             <li>
-                                <A href='/login/forumSpace' className='navigation_home'>Accueil</A>
+                                <A href='/login/forumspace' className='navigation_home'>Accueil</A>
                             </li>
                             <li>
                                 <A href='/login/profile' className='navigation_profile'>Votre profil</A>

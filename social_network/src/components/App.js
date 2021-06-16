@@ -12,10 +12,9 @@ import Profile from '../pages/Profile'
 const routes = {
   '/':()=> <Home />,
   '/signup':() => <Signup />,
-  // '/signup':() => <Profile /> DIRECTION SINGUP - PROFILE ? 
   '/signup/profile':() => <Profile />,
   '/login':() => <Login />,
-  '/login/forumSpace':()=> <ForumSpace />,
+  '/login/forumspace':()=> <ForumSpace />,
   '/login/profile':()=> <Profile />
 }
 

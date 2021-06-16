@@ -1,5 +1,28 @@
 .profile{
     display: flex;
     flex-direction: column;
+    margin-left: 100px;
+    align-items: center;
+}
+.profile_orga{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.form_profile{
+    display: flex;
+    flex-direction: column;
     width: 300px;
+    margin-right: 100px;
+}
+.presentation{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-left: 100px;
+ 
+}
+.text_presentation{
+    font-style: italic;
 }

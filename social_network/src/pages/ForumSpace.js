@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { messagelist } from '../api/datas';
+import MessageList from '../components/MessageList'
 
 function ForumSpace() {
    
@@ -12,7 +14,6 @@ function ForumSpace() {
     return(
         <div>
         <Header />
-        
         <Footer />
         </div>
     )

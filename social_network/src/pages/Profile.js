@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import CreateProfile from '../components/CreateProfile';
 
 function Profile() {
-   
+
     useEffect(() => {
         document.title='Groupomania - Votre profil'
     },[])

@@ -5,7 +5,7 @@ import CreateAccount from './CreateAccount';
 import '../styles/Signup.css'
 
 
-function Connection( { userName, setUserName }, { password, setPassword }) {
+function Connexion( { userName, setUserName }, { password, setPassword }) {
 
     const [user_Name, setUser_Name] = useState('')
     const [user_password, setUser_Password] = useState('')
@@ -26,7 +26,7 @@ function Connection( { userName, setUserName }, { password, setPassword }) {
     function handleSubmit(e){
         if(setUser_Name !== setUserName){
             alert('Nom d\'utilisateur non connu')
-        } else if (setPassword !== setPassword){
+        } else if (setUser_Password !== setPassword){
             alert('Mot de passe non connu')
         } else {
             alert('Connexion réussie'),
@@ -67,4 +67,4 @@ function Connection( { userName, setUserName }, { password, setPassword }) {
     )
 }
 
-export default Connection
+export default Connexion

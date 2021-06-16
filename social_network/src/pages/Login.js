@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import Connection from '../components/Connection';
+import Connexion from '../components/Connexion';
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 
@@ -12,7 +12,7 @@ function Login() {
     return(
     <div>
         <Banner />
-        <Connection />
+        <Connexion />
         <Footer />
     </div>
 )
