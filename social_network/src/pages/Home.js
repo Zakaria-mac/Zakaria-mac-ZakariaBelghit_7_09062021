@@ -6,7 +6,7 @@ function Home() {
 
     return(
         <div>
-        <A href='/signup'>{title}</A>
+        <A href='/signup/'>{title}</A>
         </div>
     )
 }

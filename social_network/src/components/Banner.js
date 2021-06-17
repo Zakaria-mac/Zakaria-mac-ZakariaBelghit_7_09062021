@@ -18,10 +18,10 @@ function Banner() {
                     <nav>
                         <ul className='nav_banner'>
                             <li>
-                                <A href='/signup' className='nav_inscription'>Inscrivez-vous</A>
+                                <A href='/signup/' className='nav_inscription'>Inscrivez-vous</A>
                             </li>
                             <li>
-                                <A href='/login' className='nav_connexion'>Connectez-vous</A>
+                                <A href='/signup/login/' className='nav_connexion'>Connectez-vous</A>
                             </li>
                         </ul>
                     </nav>        

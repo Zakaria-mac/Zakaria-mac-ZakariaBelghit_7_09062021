@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {A} from 'hookrouter';
 import '../styles/Signup.css';
 import icon from '../assets/icon.png'
@@ -9,6 +9,11 @@ function CreateAccount(){
     
     const [userName, setUserName]=useState('')
     const [password, setPassword]=useState('')
+
+    useEffect(() => {
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('password', password)
+    }, [userName, password])
 
     function handleChange(e) {
         setUserName(e.target.value)
@@ -21,10 +26,6 @@ function CreateAccount(){
         if (!userName.includes('@')){
             alert('Attention, il faut mettre un @ pour valider l\'email')
         }
-    }
-
-    function handleSubmit(){
-        <A href='/login/profile'></A>
     }
 
     return (
@@ -52,7 +53,7 @@ function CreateAccount(){
             </p>
             <button type='submit' 
                     className="btn_signup"
-                    onClick={handleSubmit}
+                    onClick={(e) => window.location.href ='/signup/login/profile/'}
                     >Inscrivez-vous</button>
         </form>
     )

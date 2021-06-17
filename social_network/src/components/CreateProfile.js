@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 
 
-function CreateProfile({  }) {
+function CreateProfile() {
 
     const [name, setName] = useState(localStorage.getItem('name') || '')
     const [department, setDepartment] = useState(localStorage.getItem('department') || '')

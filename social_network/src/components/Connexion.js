@@ -26,7 +26,7 @@ function Connexion( { userName, setUserName }, { password, setPassword }) {
     function handleSubmit(e){
         if(setUser_Name !== setUserName){
             alert('Nom d\'utilisateur non connu')
-        } else if (setUser_Password !== setPassword){
+        } else if (setPassword !== setPassword){
             alert('Mot de passe non connu')
         } else {
             alert('Connexion réussie'),
