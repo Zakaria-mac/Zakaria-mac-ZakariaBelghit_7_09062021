@@ -14,7 +14,7 @@ function Header() {
                 <div className='header'>
                     
                     <div className='banner'>
-                        <A href='/login/forumspace'>
+                        <A href='/signup/login/forumspace/'>
                             <img src={logo_white} className='logo' alt='Logo de Groupomania' title='Logo de Groupomania'></img>
                         </A>
                     </div>

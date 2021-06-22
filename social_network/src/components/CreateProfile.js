@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 
 
-function CreateProfile() {
+function CreateProfile({ name, setName, department, setDepartment}) {
 
-    const [name, setName] = useState(localStorage.getItem('name') || '')
-    const [department, setDepartment] = useState(localStorage.getItem('department') || '')
     const [leisure, setLeisure] = useState(localStorage.getItem('leisure') || '')
 
     useEffect(() =>{

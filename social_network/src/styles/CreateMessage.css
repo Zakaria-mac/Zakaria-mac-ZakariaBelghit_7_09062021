@@ -4,6 +4,12 @@
     justify-content: center;
     align-items: center;
 }
+.title_message{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 .form_create{
     display: flex;
     flex-direction: column;

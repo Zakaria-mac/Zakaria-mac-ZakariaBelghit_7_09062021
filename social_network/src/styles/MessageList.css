@@ -1,0 +1,63 @@
+.page_bloc{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 40px;
+}
+.message_presentation{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+.message_bloc{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.title_front_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+.like_button{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.dislike_button{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.form_messagelist{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-top: 25px;
+    width: 100%;
+}
+.text_area{
+    resize: none;
+}
+.list{
+    list-style-type: none;
+	padding: 32px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}

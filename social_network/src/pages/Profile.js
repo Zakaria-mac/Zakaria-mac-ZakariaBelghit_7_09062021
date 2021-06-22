@@ -7,6 +7,9 @@ import CreateProfile from '../components/CreateProfile';
 
 function Profile() {
 
+    const [name, setName] = useState(localStorage.getItem('name') || '')
+    const [department, setDepartment] = useState(localStorage.getItem('department') || '')
+
     useEffect(() => {
         document.title='Groupomania - Votre profil'
     },[])
@@ -14,7 +17,9 @@ function Profile() {
     return(
         <div>
         <Header />
-        <CreateProfile />
+        <CreateProfile 
+            name={name} setName={setName}
+            department={department} setDepartment={setDepartment}/>
         <Footer />
 
         </div>
