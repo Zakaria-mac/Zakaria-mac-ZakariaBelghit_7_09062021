@@ -14,7 +14,9 @@ function MessageList({name, department, title, message, selectFile, comment, set
 
     return(
         <div className='page_bloc'> 
+
             <div className='message_presentation'>
+
                 <h2 className='title_front_page'>{name} de l'équipe {department}</h2>
 
                 <div className='message_bloc'>
@@ -38,38 +40,40 @@ function MessageList({name, department, title, message, selectFile, comment, set
                     </form>
 
                     <div>{comment}</div>
+                
+                    <ul className='list'>
+                        {messagelist.map(({id, name, department, object, message, cover, like, dislike}) => (
+                            <div key={id}>
+                                <MockDataMessage 
+                                    id={id}
+                                    name={name}
+                                    department={department}
+                                    object={object}
+                                    message={message} 
+                                    cover={cover}
+                                    like={like}
+                                    dislike={dislike}                                       
+                                />
+
+                                <form className='form_messagelist'>
+                                    <textarea className='text_area'
+                                        name='comment'
+                                        placeholder='Commentez...'
+                                        value={comment}
+                                        onChange={(e) => setComment(e.target.value)}
+                                    >
+                                    </textarea>
+                                    <button type='submit' className='comment_button' onClick={(e) => e.preventDefault}>Commentez</button>
+                                </form>
+                                
+                            </div>
+                        ))}
+                    </ul>
+
                 </div>
-            
 
-                <ul className='list'>
-                    {messagelist.map(({id, name, department, object, message, cover, like, dislike}) => (
-                        <div key={id} className='message_list_forum'>
-                            <MockDataMessage 
-                                id={id}
-                                name={name}
-                                department={department}
-                                object={object}
-                                message={message} 
-                                cover={cover}
-                                like={like}
-                                dislike={dislike}                                       
-                            />
-
-                            <form className='form_messagelist'>
-                                <textarea className='text_area'
-                                    name='comment'
-                                    placeholder='Commentez...'
-                                    value={comment}
-                                    onChange={(e) => setComment(e.target.value)}
-                                >
-                                </textarea>
-                                <button type='submit' className='comment_button' onClick={(e) => e.preventDefault}>Commentez</button>
-                            </form>
-                            
-                        </div>
-                    ))}
-                </ul>
             </div>
+            
         </div>
         
     )

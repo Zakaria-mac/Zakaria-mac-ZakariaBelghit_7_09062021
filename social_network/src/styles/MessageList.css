@@ -1,10 +1,10 @@
 .page_bloc{
     display:flex;
     flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    align-self: center;
     margin-top: 40px;
+    margin-left: 330px;
+    width: 50%;
 }
 .message_presentation{
     border-top: 1px solid black;
@@ -14,18 +14,20 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 100%;
+    padding: 20px;
 }
 .message_bloc{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 80%;
 }
 .title_front_page{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     text-align: center;
 }
 .buttons{
@@ -50,27 +52,25 @@
     flex-direction: column;
     align-self: flex-start;
     margin-top: 25px;
-    width: 100%;
+    width: 576px;
 }
 .text_area{
     resize: none;
 }
 .list{
     list-style-type: none;
-	padding: 25px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-    width: 50%;
+    padding: 0%;
+    width: 100%;
 }
 .messageItem{
-    margin: 10px 10px 10px 0;
-    width: 100%;
+    margin: 50px 0 10px 0;
+    padding: 0;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	flex-direction: column;
-	text-transform: capitalize;
 }
 .img_cover{
     height: 300px;
