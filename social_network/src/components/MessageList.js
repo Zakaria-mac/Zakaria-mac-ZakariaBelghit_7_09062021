@@ -29,7 +29,7 @@ function MessageList({name, department, title, message, selectFile, comment, set
                     <form className='form_messagelist'>
                         <textarea className='text_area'
                             name='comment'
-                            placeholder='Commentez...)'
+                            placeholder='Commentez...'
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
                         >
@@ -39,28 +39,37 @@ function MessageList({name, department, title, message, selectFile, comment, set
 
                     <div>{comment}</div>
                 </div>
-            </div>
+            
 
-            <ul className='list'>
-                {messagelist.map(({id, name, object, message, like, dislike}) => (
-                    <div key={id} className='message_list_forum'>
-                        <MockDataMessage 
-                            id={id}
-                            name={name}
-                            object={object}
-                            message={message}      
-                            like={like}
-                            dislike={dislike}                  
-                        />
-                        
-                    </div>
-                ))}
-            </ul>
-            <div className='buttons'>
-                        <img src={like} alt='Bouton like' title='Bouton like' className='like_button'></img>
-                        <img src={dislike} alt='Bouton dislike' title='Bouton dislike' className='dislike_button'></img>
-            </div>
+                <ul className='list'>
+                    {messagelist.map(({id, name, department, object, message, cover, like, dislike}) => (
+                        <div key={id} className='message_list_forum'>
+                            <MockDataMessage 
+                                id={id}
+                                name={name}
+                                department={department}
+                                object={object}
+                                message={message} 
+                                cover={cover}
+                                like={like}
+                                dislike={dislike}                                       
+                            />
 
+                            <form className='form_messagelist'>
+                                <textarea className='text_area'
+                                    name='comment'
+                                    placeholder='Commentez...'
+                                    value={comment}
+                                    onChange={(e) => setComment(e.target.value)}
+                                >
+                                </textarea>
+                                <button type='submit' className='comment_button' onClick={(e) => e.preventDefault}>Commentez</button>
+                            </form>
+                            
+                        </div>
+                    ))}
+                </ul>
+            </div>
         </div>
         
     )

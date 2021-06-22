@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .buttons{
     display: flex;
@@ -56,8 +57,23 @@
 }
 .list{
     list-style-type: none;
-	padding: 32px;
+	padding: 25px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+    width: 50%;
+}
+.messageItem{
+    margin: 10px 10px 10px 0;
+    width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-transform: capitalize;
+}
+.img_cover{
+    height: 300px;
+	width: 300px;
+	border-radius: 20px;
 }
