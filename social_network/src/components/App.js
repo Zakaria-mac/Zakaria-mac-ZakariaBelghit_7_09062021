@@ -11,9 +11,9 @@ import Profile from '../pages/Profile'
 const routes = {
   '/':()=> <Home />,
   '/signup/':() => <Signup />,
-  '/signup/login/':() => <Login />,
-  '/signup/login/forumspace/':()=> <ForumSpace />,
-  '/signup/login/profile/':()=> <Profile />
+  '/login/':() => <Login />,
+  '/login/forumspace/':()=> <ForumSpace />,
+  '/login/profile/':()=> <Profile />
 }
 
 
@@ -24,6 +24,8 @@ function App(){
     return  <div>
               { match }
             </div>
+
+            
 }
 
 export default App

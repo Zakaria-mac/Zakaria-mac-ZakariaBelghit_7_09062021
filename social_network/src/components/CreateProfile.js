@@ -50,7 +50,7 @@ function CreateProfile({ name, setName, department, setDepartment}) {
                 <div className='presentation'>
                     <h2>{subtitle}</h2>
                     <p className='text_presentation'> "Hello l'équipe ! Si vous ne me connaissez pas, ce petit texte de présentation pourra vous en dire plus sur mon travail, mes envies, mes passions.
-                        Je m'appelle {name} et je fais partie du service de {department}. Je suis passionnée par {leisure} et serais heureux·se de vous en parler davantage lors d'un afterwork ou séminaire ! &#128512;"
+                        Je m'appelle {name} et je fais partit du service de {department}. Je suis passionné·e par {leisure} et serais heureux·se de vous en parler davantage lors d'un afterwork ou séminaire ! &#128512;"
                     </p>
                 </div>
             </div>

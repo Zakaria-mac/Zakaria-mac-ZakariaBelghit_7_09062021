@@ -21,7 +21,7 @@ function Banner() {
                                 <A href='/signup/' className='nav_inscription'>Inscrivez-vous</A>
                             </li>
                             <li>
-                                <A href='/signup/login/' className='nav_connexion'>Connectez-vous</A>
+                                <A href='/login/' className='nav_connexion'>Connectez-vous</A>
                             </li>
                         </ul>
                     </nav>        

@@ -16,7 +16,7 @@ function ForumSpace() {
     const [comment, setComment] = useState(localStorage.getItem('comment') || '')
    
     useEffect(() => {
-        document.title='Groupomania - Hello'
+        document.title='Groupomania - Forum '
     },[])
 
     return(
