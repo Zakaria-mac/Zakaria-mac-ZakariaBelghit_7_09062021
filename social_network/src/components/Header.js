@@ -32,10 +32,10 @@ function Header() {
                     <nav className='navigation_banner'>
                         <ul className='navigation_choices'>
                             <li>
-                                <A href='/login/forumspace/' className='navigation_home'>Accueil</A>
+                                <A href='/forumspace/' className='navigation_home'>Accueil</A>
                             </li>
                             <li>
-                                <A href='/login/profile/' className='navigation_profile'>Votre profil</A>
+                                <A href='/profile/' className='navigation_profile'>Votre profil</A>
                             </li>
                             <li>
                                 <A href='/' className='navigation_logoff'>Déconnection</A>

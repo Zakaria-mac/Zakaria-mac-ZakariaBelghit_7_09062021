@@ -17,8 +17,8 @@ function App(){
     '/':()=> <Home />,
     '/signup/':() => <Signup />,
     '/login/':() => <Login />,
-    '/login/forumspace/':()=> <ForumSpace />,
-    '/login/profile/':()=> <Profile />
+    '/forumspace/':()=> <ForumSpace />,
+    '/profile/':()=> <Profile />
   }
     const match = useRoutes(routes)
     
