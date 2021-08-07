@@ -3,8 +3,8 @@ import {A} from 'hookrouter';
 import '../styles/Banner.css'
 import logo_white from '../assets/logo_white.png'
 
-function Banner() {
-    const title='Réseau social interne'
+function SignUpBanner() {
+    const title='Réseau social d\'entreprise'
 
     return(
             <header>
@@ -31,4 +31,4 @@ function Banner() {
     )
 }
 
-export default Banner
+export default SignUpBanner

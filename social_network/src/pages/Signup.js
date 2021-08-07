@@ -1,17 +1,22 @@
 import React from 'react';
 import { useEffect } from 'react';
+
 import CreateAccount from '../components/CreateAccount';
-import Banner from '../components/Banner';
+import SignUpBanner from '../components/SignupBanner';
 import Footer from '../components/Footer';
 
 function Signup() {
+
     useEffect(() => {
         document.title='Groupomania - Inscription'
     },[])
+
     return(
     <div>
-        <Banner />
-        <CreateAccount />
+        <SignUpBanner />
+
+        <CreateAccount/>
+
         <Footer />
     </div>
 )

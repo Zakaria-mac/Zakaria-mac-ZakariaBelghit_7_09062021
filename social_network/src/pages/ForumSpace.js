@@ -1,44 +1,37 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+
+import GetAllMessages from '../components/Messages'
 import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { messagelist } from '../api/datas';
-import MessageList from '../components/MessageList'
+import Footer from '../components/Footer'
 import CreateMessage from '../components/CreateMessage';
 
-function ForumSpace() {
-
-    const [name, setName] = useState(localStorage.getItem('name') || '');
-    const [department, setDepartment] = useState(localStorage.getItem('department') || '');
-    const [title, setTitle] = useState(localStorage.getItem('title') || '');
-    const [message, setMessage] = useState(localStorage.getItem('message') || '');
-    const [selectFile, setSelectFile] = useState(localStorage.getItem('selectFile') || '');
-    const [comment, setComment] = useState(localStorage.getItem('comment') || '')
-   
-    useEffect(() => {
-        document.title='Groupomania - Forum '
-    },[])
+function ForumSpace(){
+    
+    const [messageList, setMessageList] = useState([])   
+    const [alert, setAlert] = useState(false)    
 
     return(
         <div>
-        <Header />
-        <CreateMessage 
-            name={name} setName={setName}
-            department={department} setDepartment={setDepartment}
-            title={title} setTitle={setTitle}
-            message={message} setMessage={setMessage}
-            selectFile={selectFile} setSelectFile={setSelectFile}
-        />
-        <MessageList 
-            name={name} setName={setName}
-            department={department} setDepartment={setDepartment}
-            title={title} setTitle={setTitle}
-            message={message} setMessage={setMessage}
-            selectFile={selectFile} setSelectFile={setSelectFile}
-            comment={comment} setComment={setComment}
-        />
-        <Footer />
+            <Header />
+
+            <div>
+                <h1> Message of the forum </h1>
+
+                <CreateMessage 
+                    alert={alert} setAlert={setAlert} 
+                />
+
+                <GetAllMessages 
+                    messageList={messageList} setMessageList={setMessageList}
+                    alert={alert} setAlert={setAlert}
+                />
+                
+            </div>
+
+            <Footer />
         </div>
     )
 }
+
 export default ForumSpace

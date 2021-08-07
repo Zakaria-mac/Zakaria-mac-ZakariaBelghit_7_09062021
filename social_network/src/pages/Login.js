@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
+
 import Connexion from '../components/Connexion';
-import Banner from '../components/Banner';
+import SignUpBanner from '../components/SignupBanner';
 import Footer from '../components/Footer';
 
 
@@ -9,10 +10,13 @@ function Login() {
     useEffect(() => {
         document.title='Groupomania - Connexion'
     },[])
+    
     return(
     <div>
-        <Banner />
+        <SignUpBanner />
+
         <Connexion />
+
         <Footer />
     </div>
 )

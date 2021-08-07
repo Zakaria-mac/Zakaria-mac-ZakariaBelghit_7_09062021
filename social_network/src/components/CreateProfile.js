@@ -1,58 +1,90 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
+import { setProfile } from '../api/routes';
 import '../styles/Profile.css';
 
 
-function CreateProfile({ name, setName, department, setDepartment}) {
+function CreateProfile({ alert, setAlert}) {
 
-    const [leisure, setLeisure] = useState(localStorage.getItem('leisure') || '')
+    const [name, setName] = useState('')
+    const [department, setDepartment] = useState('')
+    const [leisure, setLeisure] = useState('')
+
+    const mounted = useRef(true)
 
     useEffect(() =>{
-        localStorage.setItem('name', name);
-        localStorage.setItem('department', department);
-        localStorage.setItem('leisure', leisure);
-    }, [name, department, leisure]);
+        if (alert){
+            setTimeout(() => {
+                if(mounted.current){
+                    setAlert(false)
+                }
+            }, 1000);
+        }
+    }, [alert])
+
+    function handleSubmit(event){
+        event.preventDefault()
+        setProfile(name, department, leisure)
+        .then(() =>{
+            if(mounted.current){
+                setName('')
+                setDepartment('')
+                setLeisure('')
+                setAlert(true)
+            }
+        })
+    }
 
     const title = 'Pour compléter/modifier mon profil'
-    const subtitle = 'Ma présentation...'
+
+    function handleChangeName(event){
+        setName(event.target.value);
+    }
+    function handleChangeDepartment(event){
+        setDepartment(event.target.value);
+    }
+    function handleChangeLeisure(event){
+        setLeisure(event.target.value)
+    }
 
     return (
         <div className='profile'>
             <h1>{title}</h1>
             <div className='profile_orga'>
+                {alert && <p>Informations enregistrées</p>}
             
-                <form className='form_profile'>
+                <form className='form_profile' onSubmit={handleSubmit}>
                     <label>Votre nom et prénom</label>
                     <input
                         type='text'
-                        name='nom'
-                        placeholder='Dupont'
-                        required='true'
+                        placeholder='Votre nom'
+                        onChange={handleChangeName}
                         value={name}
-                        onChange={(e) => setName(e.target.value)}></input>
+                        required={true}
+                        >
+                    </input>
 
                     <label>Votre poste/département</label>
                     <input
                         type='text'
-                        name='departement'
-                        placeholder='Comptabilité/finance'
-                        required='true'
+                        placeholder='Votre fonction'
+                        onChange={handleChangeDepartment}
                         value={department}
-                        onChange={(e) => setDepartment(e.target.value)}></input>
+                        required={true}
+                        >
+                    </input>
 
                     <label>Vos loisirs</label>
                     <textarea
+                        placeholder='Quels sont vos loisirs favoris ?'
+                        onChange={handleChangeLeisure}
                         value={leisure}
-                        onChange={(e) => setLeisure(e.target.value)}></textarea>
+                        >
+
+                    </textarea>
                     
-                    <button type='submit' onClick={(e) => { e.preventDefault}}> Enregistrez </button>
+                    <button type='submit'> Enregistrez </button>
                 </form>
 
-                <div className='presentation'>
-                    <h2>{subtitle}</h2>
-                    <p className='text_presentation'> "Hello l'équipe ! Si vous ne me connaissez pas, ce petit texte de présentation pourra vous en dire plus sur mon travail, mes envies, mes passions.
-                        Je m'appelle {name} et je fais partit du service de {department}. Je suis passionné·e par {leisure} et serais heureux·se de vous en parler davantage lors d'un afterwork ou séminaire ! &#128512;"
-                    </p>
-                </div>
             </div>
         </div>
     )

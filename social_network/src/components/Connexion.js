@@ -1,48 +1,46 @@
 import React from 'react';
-import { useState } from 'react';
-import { A } from 'hookrouter' 
-import CreateAccount from './CreateAccount';
+import { useState, useEffect } from 'react';
 import '../styles/Signup.css'
+import { setLogin } from '../api/routes'
 
 
-function Connexion( { userName, setUserName }, { password, setPassword }) {
+function Connexion() {
 
-    const [user_Name, setUser_Name] = useState('')
-    const [user_password, setUser_Password] = useState('')
+    const [userLogin, setUserLogin] = useState('')
+    const [userLogPassword, setUserLogPassword] = useState('')
     
-    function handleChange(e) {
-        setUser_Name(e.target.value)
+    function handleSubmit(event){
+        event.preventDefault;
+        setLogin(userLogin, userLogPassword)
+            .then(() => {
+                setUserLogin('')
+                setUserLogPassword('')
+            })
     }
-    function handlePassword(e){
-        setUser_Password(e.target.value)
+
+    function handleChangeUser(e) {
+        setUserLogin(e.target.value)
+    }
+    function handleChangePassword(e){
+        setUserLogPassword(e.target.value)
     }
 
     function handleBlur() {
-        if (!user_Name.includes('@')){
+        if (!userLogin.includes('@')){
             alert('Attention, il faut mettre un @ pour valider l\'email')
         }
     }
 
-    function handleSubmit(e){
-        if(setUser_Name !== setUserName){
-            alert('Nom d\'utilisateur non connu')
-        } else if (setPassword !== setPassword){
-            alert('Mot de passe non connu')
-        } else {
-            alert('Connexion réussie'),
-            <A href='/login/messagelist'></A>
-        }
-    }
-
     return(
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
+            
             <p className='user_Name'>
                 <label for='email'> Inscrivez votre email </label>
                     <input 
                         type='email'
-                        value={user_Name}
+                        value={userLogin}
                         required={true}
-                        onChange={handleChange}
+                        onChange={handleChangeUser}
                         placeholder='Entrez votre email pro.'
                         onBlur={handleBlur}
                     />
@@ -51,17 +49,13 @@ function Connexion( { userName, setUserName }, { password, setPassword }) {
                 <label for='password'> Mettez votre mot de passe </label>
                     <input
                         type='text' 
-                        value={user_password}
+                        value={userLogPassword}
                         required={true}
-                        onChange={handlePassword}
+                        onChange={handleChangePassword}
                         placeholder='Mot de passe'
                     />
             </p>
-            <button type='submit' 
-                    className="btn_signup"
-                    onClick={handleSubmit}
-                    >Connectez-vous
-            </button>
+            <button type='submit' className="btn_signup">Connectez-vous</button>
         </form>
     
     )

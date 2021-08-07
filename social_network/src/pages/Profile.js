@@ -1,14 +1,15 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { A } from 'hookrouter'
+import { useEffect, useState } from 'react';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer'
-import CreateProfile from '../components/CreateProfile';
+import CreateProfile from '../components/CreateProfile'
+import PersonalInfo from'../components/PersonalInfo'
 
 function Profile() {
 
-    const [name, setName] = useState(localStorage.getItem('name') || '')
-    const [department, setDepartment] = useState(localStorage.getItem('department') || '')
+    const [alert, setAlert] = useState(false)  
+    const [infoProfile, setInfoProfile]= useState([])  
 
     useEffect(() => {
         document.title='Groupomania - Votre profil'
@@ -17,9 +18,16 @@ function Profile() {
     return(
         <div>
         <Header />
+
         <CreateProfile 
-            name={name} setName={setName}
-            department={department} setDepartment={setDepartment}/>
+            alert={alert} setAlert={setAlert} 
+        />
+
+        <PersonalInfo 
+            infoProfile={infoProfile} setInfoProfile={setInfoProfile}
+            alert={alert}
+        />
+
         <Footer />
 
         </div>

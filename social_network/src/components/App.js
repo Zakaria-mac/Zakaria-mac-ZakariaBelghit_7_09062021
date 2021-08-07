@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRoutes } from 'hookrouter'
 import '../styles/App.css';
 
@@ -8,18 +8,20 @@ import Home from '../pages/Home'
 import ForumSpace from '../pages/ForumSpace'
 import Profile from '../pages/Profile'
 
-const routes = {
-  '/':()=> <Home />,
-  '/signup/':() => <Signup />,
-  '/login/':() => <Login />,
-  '/login/forumspace/':()=> <ForumSpace />,
-  '/login/profile/':()=> <Profile />
-}
+import { getMessage } from '../api/routes'
 
 
 function App(){
 
+  const routes = {
+    '/':()=> <Home />,
+    '/signup/':() => <Signup />,
+    '/login/':() => <Login />,
+    '/login/forumspace/':()=> <ForumSpace />,
+    '/login/profile/':()=> <Profile />
+  }
     const match = useRoutes(routes)
+    
 
     return  <div>
               { match }

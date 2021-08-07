@@ -1,0 +1,72 @@
+{
+  "messages": [
+    {
+      "id": 123,
+      "name": "Dupond Henri",
+      "department": "Finance",
+      "object": "Sorti/afterwork",
+      "message": "Salut la compagnie ! qui est dispo pour un afterwork ?",
+      "cover": "https://www.viage.be/wp-content/uploads/2016/05/Afterwork-Bruxelles.jpg",
+      "like": "https://image.similarpng.com/very-thumbnail/2020/11/Black-Like-icon-design-illustration-on-transparent-background-PNG.png",
+      "dislike": "http://pngimg.com/uploads/dislike/dislike_PNG63.png"
+    },
+    {
+      "id": "124",
+      "name": "Enrique",
+      "department": "Tech",
+      "object": "Problème technique",
+      "message": "Salut  ! Pour l\"équipe tech, j\"ai un soucis avec mon lien",
+      "cover": "https://www.viage.be/wp-content/uploads/2016/05/Afterwork-Bruxelles.jpg",
+      "like": "https://image.similarpng.com/very-thumbnail/2020/11/Black-Like-icon-design-illustration-on-transparent-background-PNG.png",
+      "dislike": "http://pngimg.com/uploads/dislike/dislike_PNG63.png"
+    },
+    {
+      "id": "125",
+      "name": "Maluma",
+      "department": "CEO",
+      "object": "Café/croissant",
+      "message": "Salut tout le monde ! j\"ai dépose des croissant.choco sur la table ce matin",
+      "cover": "https://www.viage.be/wp-content/uploads/2016/05/Afterwork-Bruxelles.jpg",
+      "like": "https://image.similarpng.com/very-thumbnail/2020/11/Black-Like-icon-design-illustration-on-transparent-background-PNG.png",
+      "dislike": "http://pngimg.com/uploads/dislike/dislike_PNG63.png"
+    },
+    {
+      "id": "127",
+      "name": "Madonna",
+      "department": "Happiness Manager",
+      "object": "Babyfoot cassé",
+      "message": "Salut, le baby-foot est cassé ! Un technicien va venir vite pour le réparer.",
+      "cover": "https://www.viage.be/wp-content/uploads/2016/05/Afterwork-Bruxelles.jpg",
+      "like": "https://image.similarpng.com/very-thumbnail/2020/11/Black-Like-icon-design-illustration-on-transparent-background-PNG.png",
+      "dislike": "http://pngimg.com/uploads/dislike/dislike_PNG63.png"
+    },
+    {
+      "message": "Zakaria",
+      "name": "Finance",
+      "department": "Essai numérique",
+      "object": "HelloWorld",
+      "cover": "",
+      "id": "uTLtVmU"
+    },
+    {
+      "name": "zak",
+      "department": "Marketing",
+      "object": "Essaie à nouveau",
+      "message": "Tentons",
+      "cover": "",
+      "id": "RlMeSL_"
+    },
+    {
+      "name": "zak",
+      "department": "Martketing",
+      "leisure": "Hello",
+      "id": "387ZhGA"
+    },
+    {
+      "name": "Zak",
+      "department": "Hello",
+      "leisure": "Hello\n",
+      "id": "05fgxeJ"
+    }
+  ]
+}

@@ -1,24 +1,38 @@
 import React from 'react';
+import { setSignup } from '../api/routes.js';
 import { useState, useEffect } from 'react';
-import {A} from 'hookrouter';
 import '../styles/Signup.css';
-import icon from '../assets/icon.png'
 
 
 function CreateAccount(){
-    
-    const [userName, setUserName]=useState('')
-    const [password, setPassword]=useState('')
+
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+    const [alert, setAlert] = useState('')
 
     useEffect(() => {
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('password', password)
-    }, [userName, password])
+        if(alert){
+            setTimeout(()=>{
+                setAlert(false);
+            }, 1000)
+        }
+    },[alert])
 
-    function handleChange(e) {
+    function handleSubmit(e){
+        e.preventDefault();
+        setSignup(userName, password)
+            .then(()=>{
+                setUserName('');
+                setPassword('');
+                setAlert(true)
+            })
+    }
+
+    function handleChangeUser(e) {
         setUserName(e.target.value)
     }
-    function handlePassword(e){
+
+    function handleChangePassword(e){
         setPassword(e.target.value)
     }
 
@@ -29,33 +43,38 @@ function CreateAccount(){
     }
 
     return (
-        <form className='form'>
-            <p className='user_Name'>
-                <label for='email'> Inscrivez votre email </label>
-                    <input 
-                        type='email'
-                        value={userName}
-                        required={true}
-                        onChange={handleChange}
-                        placeholder='Entrez votre email pro.'
-                        onBlur={handleBlur}
-                    />
-            </p>
-            <p className='password'>
-                <label for='password'> Créez un mot de passe </label>
-                    <input
-                        type='text' 
-                        value={password}
-                        required={true}
-                        onChange={handlePassword}
-                        placeholder='Mot de passe'
-                    />
-            </p>
-            <button type='submit' 
-                    className="btn_signup"
-                    onClick={(e) => window.location.href ='/signup/login/profile/'}
-                    >Inscrivez-vous</button>
-        </form>
+        <div>
+
+            {alert && <h2> Votre compte a été créé </h2> }
+
+            <form className='form' onSubmit={handleSubmit}>
+
+                <p className='user_Name'>
+                    <label for='email'> Inscrivez votre email </label>
+                        <input 
+                            type='email'
+                            value={userName}
+                            required={true}
+                            onChange={handleChangeUser}
+                            placeholder='Entrez votre email pro.'
+                            onBlur={handleBlur}
+                        />
+                </p>
+                <p className='password'>
+                    <label for='password'> Créez un mot de passe </label>
+                        <input
+                            type='text' 
+                            value={password}
+                            required={true}
+                            onChange={handleChangePassword}
+                            placeholder='Mot de passe'
+                        />
+                </p>
+
+                <button type='submit' className="btn_signup">Inscrivez-vous</button>
+            </form>
+
+        </div>
     )
 }
 
