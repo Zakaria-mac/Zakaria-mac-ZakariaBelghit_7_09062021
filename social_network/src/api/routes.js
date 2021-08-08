@@ -1,20 +1,20 @@
 export async function getMessages(){
-    const data = await fetch('http://localhost:3333/messages')
+    const data = await fetch('http://localhost:3000/api/messages')
     return await data.json()
 };
 
 export async function getOneMessage(){
-    const data = await fetch('http://localhost:3333/messages/:id')
+    const data = await fetch('http://localhost:3000/api/messages/:id')
     return await data.json()
 };
 
 export async function getProfileData(){
-    const data = await fetch('http://localhost:3000/profile')
+    const data = await fetch('http://localhost:3000/api/profile')
     return await data.json()
 };
 
 export async function setSignup(userName, password){
-    const data = await fetch('http://localhost:3000/auth/signup', {
+    const data = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ export async function setSignup(userName, password){
 };
 
 export async function setLogin(userLogin, userLogPassword){
-    const data = await fetch('http://localhost:3000/auth/login', {
+    const data = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export async function setLogin(userLogin, userLogPassword){
 };
 
 export async function setProfile(name, department, leisure){
-    const data = await fetch('http://localhost:3000/profile', {    
+    const data = await fetch('http://localhost:3000/api/profile', {    
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export async function setProfile(name, department, leisure){
 };
 
 export async function setMessageInput(name, department, object, message, cover){
-    const data = await fetch('http://localhost:3333/messages', {
+    const data = await fetch('http://localhost:3000/api/messages', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export async function setMessageInput(name, department, object, message, cover){
 };
 
 export async function modifyMessage(message, object, cover){
-    const data = await fetch('http://localhost:3000/messages/:id', {
+    const data = await fetch('http://localhost:3000/api/messages/:id', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ export async function modifyMessage(message, object, cover){
 };
 
 export async function deleteMessage(){
-    const data = await fetch('http://localhost:3000/messages/:id', {
+    const data = await fetch('http://localhost:3000/api/messages/:id', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ export async function deleteMessage(){
 };
 
 export async function setLikeMessages(like){
-    const data = await fetch('http://localhost:3000/messages/:id/like', {
+    const data = await fetch('http://localhost:3000/api/messages/:id/like', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ export async function setLikeMessages(like){
 };
 
 export async function setDislikeMessages(disLike){
-    const data = await fetch('http://localhost:3000/messages/:id/like', {
+    const data = await fetch('http://localhost:3000/api/messages/:id/like', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

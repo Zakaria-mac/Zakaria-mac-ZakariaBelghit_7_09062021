@@ -27,14 +27,6 @@ return(
         <h3>Votre profil</h3>
 
     <div>
-       {infoProfile.map(data=>{
-           <div key={data.id}>
-               "Hello l'équipe ! Si vous ne me connaissez pas, ce petit texte de présentation pourra vous en dire plus sur mon travail, mes envies, mes passions.
-                Je m'appelle {data.name} et je fais partie du service de {data.department}. 
-                Je suis passionné·e par {data.leisure} et serais heureux·se de vous en parler davantage lors d'un afterwork ou en séminaire ! &#128512;"
-            </div>
-       }
-       )}
         "Hello l'équipe ! Si vous ne me connaissez pas, ce petit texte de présentation pourra vous en dire plus sur mon travail, mes envies, mes passions.
         Je m'appelle  et je fais et serais heureux·se de vous en parler davantage lors d'un afterwork ou en séminaire ! &#128512;"
     </div>
