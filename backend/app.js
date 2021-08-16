@@ -1,15 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser'); //transformer le corps de la requête en objet JSON.
-const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize('sqlite::memory:', {
-    logging:console.log
-})
-try{
-    sequelize.authenticate();
-    console.log('La connexion est établie !');
-}catch(error){
-    console.error('La connexion à la base de donnée a échouée !')
-}
 
 const app = express();
 
@@ -22,9 +12,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json()); //Grâce à ce middleware, on a accès au Corps de la requête.
 
-app.post('/api/messages', (req, res, next) => {
-    console.log(req.body);
-    res.status(201).json({ message : 'Objet créé'})
+app.post('/api/messages', async (req, res, next) => {
+    res.status(201)
 })
 
 app.get('/api/messages', (req, res, next) => {

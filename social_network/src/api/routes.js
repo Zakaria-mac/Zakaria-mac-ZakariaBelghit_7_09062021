@@ -46,13 +46,13 @@ export async function setProfile(name, department, leisure){
     return await data.json()
 };
 
-export async function setMessageInput(name, department, object, message, cover){
+export async function setMessageInput(name, department, object, message, cover, like, dislike){
     const data = await fetch('http://localhost:3000/api/messages', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name, department, object, message, cover})
+        body: JSON.stringify({name, department, object, message, cover, like, dislike})
     })
     return await data.json()
 };

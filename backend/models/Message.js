@@ -1,69 +1,32 @@
-const { Datatypes } = require('sequelize')
-
-const MessageSchema = sequelize.define('Message', {
-    userId:{
-        type: Datatypes.STRING,
-        allowNull: false,
-        require: true
-    },
-    name:{
-        type: Datatypes.STRING,
-        allowNull: false,
-        require: true
-    },
-    department:{
-        type: Datatypes.STRING,
-        allowNull: false,
-        require: true
-    },
-    leisure:{
-        type: Datatypes.TEXT,
-        allowNull: false,
-        require: true
-    },
-    object:{
-        type: Datatypes.STRING(1234),
-        allowNull: false,
-        require: true
-    },
-    message:{
-        type: Datatypes.TEXT,
-        allowNull: false,
-        require: true
-    },
-    cover:{
-        type: Datatypes.TEXT,
-        allowNull: false,
-        require: true
-    },
-    userId:{
-        type: Datatypes.STRING,
-        allowNull: false,
-        require: true
-    },
-    like:{
-        type: Datatypes.INTEGER,
-        allowNull: true,
-        require: true
-    },
-    dislike:{
-        type: Datatypes.INTEGER,
-        allowNull: true,
-        require: true
-    },
-    UsersLike:[{
-        type: Datatypes.INTEGER,
-        allowNull: true,
-        require: true
-    }],
-    usersDislike:[{
-        type: Datatypes.INTEGER,
-        allowNull: true,
-        require: true
-    }],
-},
-{
-    tableName: 'Message'
-});
-
-module.exports = sequelize.models.MessageSchema;
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Message extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  };
+  Message.init({
+    userId: DataTypes.STRING,
+    name: DataTypes.STRING,
+    department: DataTypes.STRING,
+    object: DataTypes.STRING,
+    message: DataTypes.TEXT,
+    cover: DataTypes.TEXT,
+    like: DataTypes.INTEGER,
+    dislike: DataTypes.INTEGER,
+    usersLiked: DataTypes.ARRAY,
+    usersDisliked: DataTypes.ARRAY
+  }, {
+    sequelize,
+    modelName: 'Message',
+  });
+  return Message;
+};
