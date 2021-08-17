@@ -12,31 +12,36 @@ module.exports = {
         type: Sequelize.STRING
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true,
+        allowNull: false
       },
       department: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true,
+        allowNull: false
       },
       object: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        required: true,
+        allowNull: false
       },
       message: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        required: true,
+        allowNull: false
       },
       cover: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: true
       },
       like: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        required: true,   
       },
       dislike: {
-        type: Sequelize.INTEGER
-      },
-      usersLiked: {
-        type: Sequelize.ARRAY
-      },
-      usersDisliked: {
-        type: Sequelize.ARRAY
+        type: Sequelize.INTEGER,
+        required: true,
       },
       createdAt: {
         allowNull: false,

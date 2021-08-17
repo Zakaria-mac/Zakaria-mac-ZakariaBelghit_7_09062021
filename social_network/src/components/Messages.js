@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useRef } from 'react';
 import { getMessages } from '../api/routes';
+import '../styles/MessageList.css'
 
 function GetAllMessages({ messageList, setMessageList, alert }){
 
@@ -23,7 +24,7 @@ function GetAllMessages({ messageList, setMessageList, alert }){
 // map data from profile
     return(
     
-            <div>
+            <div className='messageSent'>
             {messageList.map(data =>
                 <div key={data.id}>
                     {data.name} 
@@ -31,7 +32,12 @@ function GetAllMessages({ messageList, setMessageList, alert }){
                     {data.object} 
                     {data.message} 
                     <img src={data.cover}></img>
-                </div>)}    
+                    
+                    <button type='submit'>Modifier</button>
+                    <button type='submit'>Supprimer</button>  
+                </div>)}  
+
+                
             </div>        
  
     )

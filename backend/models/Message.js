@@ -22,8 +22,6 @@ module.exports = (sequelize, DataTypes) => {
     cover: DataTypes.TEXT,
     like: DataTypes.INTEGER,
     dislike: DataTypes.INTEGER,
-    usersLiked: DataTypes.ARRAY,
-    usersDisliked: DataTypes.ARRAY
   }, {
     sequelize,
     modelName: 'Message',
