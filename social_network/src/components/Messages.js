@@ -23,7 +23,6 @@ function GetAllMessages({ messageList, setMessageList, alert }){
     
 // map data from profile
     return(
-    
             <div className='messageSent'>
             {messageList.map(data =>
                 <div key={data.id}>
@@ -32,12 +31,10 @@ function GetAllMessages({ messageList, setMessageList, alert }){
                     {data.object} 
                     {data.message} 
                     <img src={data.cover}></img>
-                    
+
                     <button type='submit'>Modifier</button>
                     <button type='submit'>Supprimer</button>  
                 </div>)}  
-
-                
             </div>        
  
     )

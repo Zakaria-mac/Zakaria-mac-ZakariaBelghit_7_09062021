@@ -7,8 +7,8 @@ import Footer from '../components/Footer'
 import CreateMessage from '../components/CreateMessage';
 
 function ForumSpace(){
-    console.log('test refresh')
-    const [messageList, setMessageList] = useState([]) 
+    
+    const [messageList, setMessageList] = useState([])   
     const [alert, setAlert] = useState(false)    
 
     return(

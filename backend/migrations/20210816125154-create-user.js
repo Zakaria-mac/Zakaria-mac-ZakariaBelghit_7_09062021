@@ -19,6 +19,21 @@ module.exports = {
         required: true,
         allowNull: false
       },
+      name: {
+        type: Sequelize.STRING,
+        required: true,
+        allowNull: false
+      },
+      department: {
+        type: Sequelize.STRING,
+        required: true,
+        allowNull: false
+      },
+      leisure: {
+        type: Sequelize.TEXT,
+        required: true,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
