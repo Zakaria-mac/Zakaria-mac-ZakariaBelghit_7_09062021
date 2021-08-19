@@ -9,34 +9,34 @@ export async function getOneMessage(){
 };
 
 export async function getProfileData(){
-    const data = await fetch('http://localhost:3000/api/profile')
+    const data = await fetch('http://localhost:3000/api/api/auth/profile')
     return await data.json()
 };
 
-export async function setSignup(userName, password){
+export async function setSignup(email, password){
     const data = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userName, password })
+        body: JSON.stringify({ email, password })
     })
     return await data.json()
 };
 
-export async function setLogin(userLogin, userLogPassword){
+export async function setLogin(email, password){
     const data = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userLogin, userLogPassword })
+        body: JSON.stringify({ email, password })
     })
     return await data.json()
 };
 
 export async function setProfile(name, department, leisure){
-    const data = await fetch('http://localhost:3000/api/profile', {    
+    const data = await fetch('http://localhost:3000/api/auth/profile', {    
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'

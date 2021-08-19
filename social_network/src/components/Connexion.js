@@ -6,27 +6,27 @@ import { setLogin } from '../api/routes'
 
 function Connexion() {
 
-    const [userLogin, setUserLogin] = useState('')
-    const [userLogPassword, setUserLogPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     
     function handleSubmit(event){
         event.preventDefault;
-        setLogin(userLogin, userLogPassword)
+        setLogin(email, password)
             .then(() => {
-                setUserLogin('')
-                setUserLogPassword('')
+                setEmail('')
+                setPassword('')
             })
     }
 
     function handleChangeUser(e) {
-        setUserLogin(e.target.value)
+        setEmail(e.target.value)
     }
     function handleChangePassword(e){
-        setUserLogPassword(e.target.value)
+        setPassword(e.target.value)
     }
 
     function handleBlur() {
-        if (!userLogin.includes('@')){
+        if (!email.includes('@')){
             alert('Attention, il faut mettre un @ pour valider l\'email')
         }
     }
@@ -38,7 +38,7 @@ function Connexion() {
                 <label for='email'> Inscrivez votre email </label>
                     <input 
                         type='email'
-                        value={userLogin}
+                        value={email}
                         required={true}
                         onChange={handleChangeUser}
                         placeholder='Entrez votre email pro.'
@@ -49,7 +49,7 @@ function Connexion() {
                 <label for='password'> Mettez votre mot de passe </label>
                     <input
                         type='text' 
-                        value={userLogPassword}
+                        value={password}
                         required={true}
                         onChange={handleChangePassword}
                         placeholder='Mot de passe'

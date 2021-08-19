@@ -6,7 +6,7 @@ import '../styles/Signup.css';
 
 function CreateAccount(){
 
-    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [alert, setAlert] = useState('')
 
@@ -20,16 +20,16 @@ function CreateAccount(){
 
     function handleSubmit(e){
         e.preventDefault();
-        setSignup(userName, password)
+        setSignup(email, password)
             .then(()=>{
-                setUserName('');
+                setEmail('');
                 setPassword('');
                 setAlert(true)
             })
     }
 
     function handleChangeUser(e) {
-        setUserName(e.target.value)
+        setEmail(e.target.value)
     }
 
     function handleChangePassword(e){
@@ -37,7 +37,7 @@ function CreateAccount(){
     }
 
     function handleBlur() {
-        if (!userName.includes('@')){
+        if (!email.includes('@')){
             alert('Attention, il faut mettre un @ pour valider l\'email')
         }
     }
@@ -53,7 +53,7 @@ function CreateAccount(){
                     <label for='email'> Inscrivez votre email </label>
                         <input 
                             type='email'
-                            value={userName}
+                            value={email}
                             required={true}
                             onChange={handleChangeUser}
                             placeholder='Entrez votre email pro.'
