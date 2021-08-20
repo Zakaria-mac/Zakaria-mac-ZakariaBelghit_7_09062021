@@ -1,5 +1,6 @@
 const model = require('../models');
-const fs = require ('fs')
+const fs = require ('fs');
+const { ERANGE } = require('constants');
 
 exports.createMessage = async (req, res, next) => {
     /* Pour ajouter un fichier à la requête, le front-end doit envoyer les données de la requête sous la forme form-data. 
@@ -14,8 +15,8 @@ exports.createMessage = async (req, res, next) => {
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         })
             return res.status(201).json({ message })
-        } 
-        catch (error){
+
+        } catch (error){
             return res.status(400).json({ error }) 
         }
 };
@@ -38,9 +39,9 @@ exports.modifyMessage = async (req, res, next) =>{
                 where : { _id: req.params.id}
             })
             return res.status(200).json({ updatedMessage })
-        }  
-    } 
-    catch (error) {
+        }
+        throw new Error('Message non trouvé') 
+    } catch (error) {
         return res.status(400).json({ error })
     }
 };
