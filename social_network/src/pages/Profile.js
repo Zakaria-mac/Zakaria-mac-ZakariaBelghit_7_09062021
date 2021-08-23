@@ -8,25 +8,18 @@ import PersonalInfo from'../components/PersonalInfo'
 
 function Profile() {
 
-    const [alert, setAlert] = useState(false)  
-    const [infoProfile, setInfoProfile]= useState([])  
-
     useEffect(() => {
         document.title='Groupomania - Votre profil'
     },[])
 
     return(
         <div>
+            
         <Header />
 
-        <CreateProfile 
-            alert={alert} setAlert={setAlert} 
-        />
+        <CreateProfile />
 
-        <PersonalInfo 
-            infoProfile={infoProfile} setInfoProfile={setInfoProfile}
-            alert={alert}
-        />
+        <PersonalInfo />
 
         <Footer />
 

@@ -1,11 +1,10 @@
 import React from 'react';
-import { setSignup } from '../api/routes.js';
 import { useState, useEffect } from 'react';
 import '../styles/Signup.css';
 
 
 function CreateAccount(){
-
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [alert, setAlert] = useState('')
@@ -16,31 +15,38 @@ function CreateAccount(){
                 setAlert(false);
             }, 1000)
         }
-    },[alert])
+    },[alert]);
 
     function handleSubmit(e){
         e.preventDefault();
-        setSignup(email, password)
-            .then(()=>{
-                setEmail('');
-                setPassword('');
-                setAlert(true)
-            })
-    }
+
+        const postData = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        };
+        fetch('http://localhost:3000/api/auth/signup', postData)
+            .then(res => res.json())
+            .then(() => 
+                    setEmail(''),
+                    setPassword(''),
+                    setAlert(true)
+            )
+    };
 
     function handleChangeUser(e) {
         setEmail(e.target.value)
-    }
+    };
 
     function handleChangePassword(e){
         setPassword(e.target.value)
-    }
+    };
 
     function handleBlur() {
         if (!email.includes('@')){
             alert('Attention, il faut mettre un @ pour valider l\'email')
         }
-    }
+    };
 
     return (
         <div>

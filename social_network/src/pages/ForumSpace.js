@@ -1,16 +1,13 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 
-import GetAllMessages from '../components/Messages'
+import GetAllMessages from '../components/Messages';
 import Header from '../components/Header';
 import Footer from '../components/Footer'
 import CreateMessage from '../components/CreateMessage';
 
 function ForumSpace(){
-    
-    const [messageList, setMessageList] = useState([])   
-    const [alert, setAlert] = useState(false)    
 
+     
     return(
         <div>
             <Header />
@@ -18,14 +15,9 @@ function ForumSpace(){
             <div>
                 <h1> Message of the forum </h1>
 
-                <CreateMessage 
-                    alert={alert} setAlert={setAlert} 
-                />
+                <CreateMessage />
 
-                <GetAllMessages 
-                    messageList={messageList} setMessageList={setMessageList}
-                    alert={alert} setAlert={setAlert}
-                />
+                <GetAllMessages />
                 
             </div>
 

@@ -8,8 +8,6 @@ import Home from '../pages/Home'
 import ForumSpace from '../pages/ForumSpace'
 import Profile from '../pages/Profile'
 
-import { getMessage } from '../api/routes'
-
 
 function App(){
 

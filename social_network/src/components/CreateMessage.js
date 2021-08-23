@@ -1,58 +1,59 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import { setMessageInput } from '../api/routes';
+import { useState, useEffect } from 'react';
 import '../styles/CreateMessage.css'
 
-function CreateMessage({ alert, setAlert }){
+function CreateMessage(){
 
     const [name, setName] = useState('')
     const [department, setDepartment] = useState('')
     const [object, setObject] = useState('')
     const [message, setMessage] = useState('')
     const [cover, setCover] = useState('')
-    
-    const mounted = useRef(true);
+    const [alert, setAlert] = useState(false)  
 
-    useEffect(()=> {
-        if(alert) {
-            setTimeout(() => {
-                if(mounted.current){
-                setAlert(false)
-            }
-            },1000)
+    useEffect(() => {
+        if(alert){
+            setTimeout(()=>{
+                setAlert(false);
+            }, 1000)
         }
     },[alert])
 
-    function handleSubmit(event){
-        event.preventDefault()
-        setMessageInput(name, department, object, message,  cover)
-        .then(() =>{
-            if(mounted.current){
-                setName('')
-                setDepartment('')
-                setObject('')
-                setMessage('');
-                setCover('')
-                setAlert(true)
-            }
-        })
+    function handleSubmit(e){
+        e.preventDefault()
+
+        const postMessage = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, department, object, message, cover })
+        };
+        fetch('http://localhost:3000/api/messages', postMessage)
+            .then(res => res.json())
+            .then(() =>
+                    setName(''),
+                    setDepartment(''),
+                    setObject(''),
+                    setMessage(''),
+                    setCover(''),
+                    setAlert(true)
+            )
     }
 
     function handleChangeName(event){
         setName(event.target.value);
-    }
+    };
     function handleChangeDepartment(event){
         setDepartment(event.target.value);
-    }
+    };
     function handleChangeOject(event){
         setObject(event.target.value);
-    }
+    };
     function handleChangeMessage(event){
         setMessage(event.target.value);
-    }
+    };
     function handleChangeCover(event){
         setCover(event.target.value);
-    }
+    };
 
     return(
         <div>

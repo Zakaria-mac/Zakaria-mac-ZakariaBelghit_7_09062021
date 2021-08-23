@@ -1,54 +1,55 @@
-import React, { useState, useEffect, useRef} from 'react';
-import { setProfile } from '../api/routes';
+import React, { useState, useEffect} from 'react';
 import '../styles/Profile.css';
 
 
-function CreateProfile({ alert, setAlert}) {
+function CreateProfile() {
 
     const [name, setName] = useState('')
     const [department, setDepartment] = useState('')
     const [leisure, setLeisure] = useState('')
+    const [alert, setAlert] = useState(false)   
 
-    const mounted = useRef(true)
 
-    useEffect(() =>{
-        if (alert){
-            setTimeout(() => {
-                if(mounted.current){
-                    setAlert(false)
-                }
-            }, 1000);
+    useEffect(() => {
+        if(alert){
+            setTimeout(()=>{
+                setAlert(false);
+            }, 1000)
         }
-    }, [alert])
+    },[alert]);
 
     function handleSubmit(event){
         event.preventDefault()
-        setProfile(name, department, leisure)
-        .then(() =>{
-            if(mounted.current){
-                setName('')
-                setDepartment('')
-                setLeisure('')
-                setAlert(true)
-            }
-        })
-    }
 
-    const title = 'Pour compléter/modifier mon profil'
+        const postData = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, department, leisure })
+        };
+        fetch('http://localhost:3000/api/auth/profile', postData)
+            .then(res => res.json())
+            .then(() =>
+                setName(''),
+                setDepartment(''),
+                setLeisure(''),
+                setAlert(true)
+            )
+    };
+
 
     function handleChangeName(event){
         setName(event.target.value);
-    }
+    };
     function handleChangeDepartment(event){
         setDepartment(event.target.value);
-    }
+    };
     function handleChangeLeisure(event){
         setLeisure(event.target.value)
-    }
+    };
 
     return (
         <div className='profile'>
-            <h1>{title}</h1>
+            <h1>Pour compléter/modifier mon profil</h1>
             <div className='profile_orga'>
                 {alert && <p>Informations enregistrées</p>}
             
