@@ -22,17 +22,17 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
         required: true,
-        allowNull: false
+        allowNull: true
       },
       department: {
         type: Sequelize.STRING,
         required: true,
-        allowNull: false
+        allowNull: true
       },
       leisure: {
         type: Sequelize.TEXT,
         required: true,
-        allowNull: false
+        allowNull: true
       },
       createdAt: {
         allowNull: false,
