@@ -12,7 +12,7 @@ exports.signup = (req, res, next) => {
             });
             user.save()
                 .then(() => res.status(201).json({ message: 'Utilisateur créé'}))
-                .catch(error => console.log(error) || res.status(400).json({ error })) 
+                .catch(error => res.status(400).json({ error })) 
                 
         })
         .catch(error => res.status(500).json({ error }))
@@ -24,29 +24,29 @@ exports.login = (req, res, next) => {
     const privateToken = process.env.DB_PRIVATE_TOKEN
 
     model.User.findOne({
-        where : { email: req.body.email }
+        where : { email: req.body.email }})
             .then(user => {
                 if(!user) {
                     return res.status(401).json({ error : 'Utilisateur non trouvé' })
                 }
                 bcrypt.compare(req.body.password, user.password)
-                    .then(valid =>{
+                    .then(valid => {
                         if(!valid){
                             return res.status(401).json({ error : 'Mot de passe incorrect' })
                         }
                         res.status(200).json({
+                            email: user.email,
                             userId: user._id,
                             token: jwt.sign(
                                 { userId: user._id },
                                 privateToken,
-                                { expiresIn:' 24h' }
+                                { expiresIn:'24h' }
                             )
                         });
                     })
-                    .catch(error => res.status(500).json( { error }))
+                    .catch(error => console.log(error) || res.status(500).json( { error }))
             })
             .catch(error => res.status(500).json( { error }))
-    })
 };
 
 exports.createProfile = async (req, res, next) => {
