@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRoutes } from 'hookrouter'
 
 
@@ -19,6 +19,10 @@ function App(){
     '/user/profile':()=> <Profile />
   }
     const match = useRoutes(routes)
+
+    useEffect(() => {
+      document.title = 'Groupomania'
+    },[])
     
 
     return  <div>

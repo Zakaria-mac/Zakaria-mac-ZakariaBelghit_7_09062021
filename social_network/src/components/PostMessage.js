@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { FormData } from "formdata-node"
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Form, Row, Col, Button } from 'react-bootstrap'
 
 function PostMessage(){
 
@@ -24,16 +26,19 @@ function PostMessage(){
         e.preventDefault()
 
         const formData = new FormData
-        formData.append('file', `${message}`)
+        formData.append('name', JSON.stringify(name))
+        formData.append('department', JSON.stringify(department))
+        formData.append('object', JSON.stringify(object))
+        formData.append('message', JSON.stringify(message))
+        formData.append('cover', File);
 
         const postMessage = {
-                method: 'POST',
-                headers: { 'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
-                body: formData
-        };
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
+            body: formData,
+        };  
+        delete postMessage.headers['Content-Type'];
         fetch('http://localhost:3000/api/messages', postMessage)
-            .then(delete PostMessage.headers['Content-Type'])
             .then(res => res.json())
             .then(() =>
                     setName(''),
@@ -65,61 +70,83 @@ function PostMessage(){
     return(
         <div>
         
-        <h2>De quoi souhaiteriez-vous discuter ?</h2>
-        {alert && <p>Message publié avec succès !</p>}
+            <h1 style={{textAlign:'center'}}className='d-flex justify-content-center mb-5 mt-3'>De quoi souhaiteriez-vous discuter ?</h1>
+            {alert && <p>Message publié avec succès !</p>}
 
-            <form onSubmit={handleSubmit}>
+            <Container>
+                <Form onSubmit={handleSubmit} className='justify-content-center align-content-center'>
+                    <Row> 
+                        <Form.Group as={Col} controlId='name'>
+                            <Form.Label>Nom et prénom </Form.Label>
+                            <Form.Control
+                                type='text'
+                                placeholder='Votre nom'
+                                onChange={handleChangeName}
+                                value={name}
+                                required>
+                            </Form.Control>
+                        </Form.Group> 
+                   
+                        <Form.Group as={Col} controlId='department'>
+                            <Form.Label>Votre fonction </Form.Label>
+                            <Form.Control
+                                type='text'
+                                placeholder='Votre fonction'
+                                onChange={handleChangeDepartment}
+                                value={department}
+                                required>
+                            </Form.Control>
+                        </Form.Group> 
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} controlId='object' className='mt-3'>
+                            <Form.Label>L'objet de votre message </Form.Label>
+                            <Form.Control
+                                type='text'
+                                placeholder="Quel est l'objet de votre message"
+                                onChange={handleChangeOject}
+                                value={object}
+                                required
+                               >
+                            </Form.Control>
+                        </Form.Group> 
+                    </Row>
 
-                    <label>Votre nom et prénom</label>
-                    <input
-                        type='text'
-                        placeholder='Votre nom'
-                        onChange={handleChangeName}
-                        value={name}
-                        required={true}
-                        >
-                    </input>
+                    <Row>
+                        <Form.Group as={Col} controlId='message' className='mt-3'>
+                            <Form.Label>Votre message </Form.Label>
+                            <Form.Control
+                                type='text'
+                                placeholder='De quoi souhaiteriez-vous discuter ?' 
+                                onChange={handleChangeMessage} 
+                                value={message}
+                                required
+                                style={{ height: '100px', width:'100%'}}
+                                > 
+                            </Form.Control>
+                        </Form.Group> 
+                    </Row>
 
-                    <label>Votre poste/département</label>
-                    <input
-                        type='text'
-                        placeholder='Votre fonction'
-                        onChange={handleChangeDepartment}
-                        value={department}
-                        required={true}
-                        >
-                    </input>
+                    <Row>
+                        <Form.Group as={Col} controlId='name' className='mt-3'>
+                            <Form.Label className='mr-4'>&#128206;</Form.Label>
+                            <Form.Control
+                                type='file'
+                                onChange={handleChangeCover}
+                                value={cover}
+                                >
+                            </Form.Control>
+                        </Form.Group> 
+                    </Row>
 
-                    <label>L'object de votre message</label>
-                    <input
-                        type='text'
-                        placeholder="Quel est l'objet de votre message"
-                        onChange={handleChangeOject}
-                        value={object}
-                        required={true}
-                        >
-                    </input>
+                    <Row>
+                        <Col>
+                            <Button className='mt-4' type="submit">Envoyez</Button>
+                        </Col>
 
-                    <label>Votre message</label>
-                    <textarea 
-                        type='text'
-                        placeholder='De quoi souhaiteriez-vous discuter ?' 
-                        onChange={handleChangeMessage} 
-                        value={message}
-                        required={true}
-                        > 
-                    </textarea>
-                    
-                    <input
-                        type='file'
-                        onChange={handleChangeCover}
-                        value={cover}
-                        >
-                    </input>
-
-                <button type="submit">Envoyez</button>
-            </form>
-
+                    </Row>
+                </Form>
+            </Container>                   
         </div>
       
     )

@@ -40,8 +40,8 @@ function GetProfile(){
                 <Container>
                     <Row className='mt-5' >
                     <div>
-                        {infoProfile.map(data => 
-                            <div key={data.id}>
+                        {[infoProfile].map(data => 
+                            <div key={data}>
                                 
                                 <p style={{textAlign:'center'}}>"Hello l'équipe ! Si vous ne me connaissez pas, ce petit texte de présentation pourra vous en dire plus sur mon travail, mes envies, mes passions.
                                 Je m'appelle {data.name} et suis au service {data.department}. J'aime beaucoup {data.leisure} et je serais heureux·se de vous en parler davantage lors d'un afterwork ou en séminaire ! &#128512;"</p>

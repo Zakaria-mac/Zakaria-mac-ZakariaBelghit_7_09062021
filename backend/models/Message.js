@@ -18,9 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     department: DataTypes.STRING,
     object: DataTypes.STRING,
     message: DataTypes.TEXT,
-    cover: DataTypes.TEXT,
-    like: DataTypes.INTEGER,
-    dislike: DataTypes.INTEGER,
+    cover: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Message',

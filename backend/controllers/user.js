@@ -5,6 +5,7 @@ const user = require('../models/user');
 
 require('dotenv').config();
 
+
 exports.signup = (req, res, next) => { 
     bcrypt.hash(req.body.password, 10) 
         .then(hash => {
@@ -73,7 +74,8 @@ exports.modifyProfile = async (req, res, next) => {
 
 exports.getProfile = async (req, res, next) => {
     try{
-        const user = await model.User.findAll()
+        const user = await model.User.findOne(
+            {where : { id : req.userId }})
         return res.status(200).json({ user })
     }  
     catch(error) {

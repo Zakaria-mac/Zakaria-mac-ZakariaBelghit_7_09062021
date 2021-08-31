@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 function Footer(){
    
     return(
-        <footer className='fixed-bottom' style={{backgroundColor:'#f8f9fa', height:'10%'}}>
+        <footer className='fixed-bottom' style={{backgroundColor:'#f8f9fa', height: '10%'}}>
             <Container>
                 <Row>
                     <Col>

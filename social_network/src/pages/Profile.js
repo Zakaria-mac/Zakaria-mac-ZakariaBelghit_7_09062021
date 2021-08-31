@@ -35,9 +35,6 @@ function Profile() {
                 </Container>
             </section>
             
-            <footer>
-                <Footer />
-            </footer>
         </div>
     )
 }

@@ -21,7 +21,8 @@ function PostSignup(){
 
     const history = useHistory()  
 
-    function handleSubmit(){
+    function handleSubmit(e){
+        e.preventDefault()
 
         const postData = {
             method: 'POST',
@@ -30,13 +31,14 @@ function PostSignup(){
         };
         fetch('http://localhost:3000/api/auth/signup', postData)
             .then(res => res.json())
-            .then(() => 
+            .then(() =>
                 setEmail(''),
                 setPassword(''),
                 setAlert(true),
-                window.location('/user/profile')
+                history.push('/user/profile')
             )
             .catch((error) => console.log(error))
+
     };
 
     function handleChangeUser(e){
@@ -87,7 +89,8 @@ function PostSignup(){
                                     placeholder='Mot de passe'
                                     onChange={handleChangePassword}
                                     value={password}
-                                    onBlur={handleBlur}    
+                                    onBlur={handleBlur}
+                                    pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'         
                                     >
                                 </Form.Control>     
                             </Form.Group>

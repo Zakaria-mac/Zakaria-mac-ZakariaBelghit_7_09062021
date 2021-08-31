@@ -5,6 +5,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer'
 import PostMessage from '../components/PostMessage';
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Row, Col } from 'react-bootstrap'
+
 function Forum(){
 
      
@@ -15,16 +18,18 @@ function Forum(){
             </header>
 
             <section>
-                <h1> Message of the forum </h1>
+                <Container>
+                    <Row>
 
-                <PostMessage />
+                    <PostMessage/>
 
-                <GetMessages />
+                    <h2 style={{textAlign:'center'}}className='d-flex justify-content-center mt-5'> Mur des publications </h2>
+                    
+                    <GetMessages />
+                    </Row>
+                </Container>             
             </section>
                 
-            <footer>
-                <Footer />
-            </footer>
         </div>                
     )
 }

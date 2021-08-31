@@ -1,6 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Row } from 'react-bootstrap'
 
 function GetMessages(){
 
@@ -33,7 +35,8 @@ function GetMessages(){
 
         const modifyData = {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
             body: JSON.stringify({ messageList })
         };
         fetch('http://localhost:3000/api/messages/:id', modifyData)
@@ -47,7 +50,8 @@ function GetMessages(){
 
         const deleteData = {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
         };
         fetch('http://localhost:3000/api/messages/:id', deleteData)
             .then(() => setMessageList(''))

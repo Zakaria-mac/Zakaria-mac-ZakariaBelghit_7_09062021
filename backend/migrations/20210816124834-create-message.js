@@ -32,14 +32,6 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true
       },
-      like: {
-        type: Sequelize.INTEGER,
-        required: true,   
-      },
-      dislike: {
-        type: Sequelize.INTEGER,
-        required: true,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
