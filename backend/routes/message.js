@@ -6,10 +6,6 @@ const auth = require ('../middleware/auth')
 const multer = require ('../middleware/multer-config')
 
 router.post('/', auth, multer, messageCtrl.createMessage)
-
-router.post('/:id/like', auth, messageCtrl.likeMessage);
-
-router.post('/:id/dislike', auth, messageCtrl.dislikeMessage);
   
 router.put('/:id', auth, multer, messageCtrl.modifyMessage);
   

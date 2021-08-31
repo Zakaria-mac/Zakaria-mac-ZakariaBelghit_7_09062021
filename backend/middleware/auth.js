@@ -10,9 +10,11 @@ module.exports= (req, res, next) => {
         const decodedToken = jwt.verify(token, privateToken);
         //Quand on décode le token, ça devient un objet javascript. On récupère le userId. Si le demande contient un Id utilisateur, on le compare à celui xtrait du token. 
         const userId = decodedToken.userId;
-        if(req.body.userId && req.body.userId !== userId){
+        console.log(userId)
+        if(!userId){ 
             throw 'User Id non valable'
         }else{
+            req.userId = userId
             next();
         }
     } catch(error){

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-import CreateAccount from '../components/CreateAccount';
+import PostSignup  from '../components/PostSignup';
 import SignUpBanner from '../components/SignupBanner';
 import Footer from '../components/Footer';
 
@@ -13,11 +13,17 @@ function Signup() {
 
     return(
     <div>
-        <SignUpBanner />
-
-        <CreateAccount/>
-
-        <Footer />
+        <header>
+            <SignUpBanner />
+        </header>
+        
+        <section>
+            <PostSignup />
+        </section>
+        
+        <footer>
+            <Footer />
+        </footer>
     </div>
 )
 }

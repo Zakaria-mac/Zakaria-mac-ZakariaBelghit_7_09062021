@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import '../styles/CreateMessage.css'
+import { FormData } from "formdata-node"
 
-function CreateMessage(){
+
+function PostMessage(){
 
     const [name, setName] = useState('')
     const [department, setDepartment] = useState('')
@@ -22,12 +23,17 @@ function CreateMessage(){
     function handleSubmit(e){
         e.preventDefault()
 
+        const formData = new FormData
+        formData.append('file', `${message}`)
+
         const postMessage = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, department, object, message, cover })
+                method: 'POST',
+                headers: { 'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
+                body: formData
         };
         fetch('http://localhost:3000/api/messages', postMessage)
+            .then(delete PostMessage.headers['Content-Type'])
             .then(res => res.json())
             .then(() =>
                     setName(''),
@@ -37,6 +43,7 @@ function CreateMessage(){
                     setCover(''),
                     setAlert(true)
             )
+            .catch((error) => console.log(error))
     }
 
     function handleChangeName(event){
@@ -118,4 +125,4 @@ function CreateMessage(){
     )
 }
 
-export default CreateMessage
+export default PostMessage

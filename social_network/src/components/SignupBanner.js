@@ -1,31 +1,41 @@
 import React from 'react';
-import {A} from 'hookrouter';
-import '../styles/Banner.css'
-import logo_white from '../assets/logo_white.png'
+import logo_black from '../assets/icon-left-font-monochrome-black.svg'
+
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Nav, Navbar} from 'react-bootstrap'
 
 function SignUpBanner() {
 
     return(
-            <header>
-                <div className='signup_banner'>
-                    
-                    <div className='img_banner'>
-                        <img src={logo_white} className='gpm_logo' alt='Logo de Groupomania' title='Logo de Groupomania'></img>
-                    </div>
+        <header>
 
-                    <nav>
-                        <ul className='nav_banner'>
-                            <li>
-                                <A href='/signup/' className='nav_inscription'>Inscrivez-vous</A>
-                            </li>
-                            <li>
-                                <A href='/login/' className='nav_connexion'>Connectez-vous</A>
-                            </li>
-                        </ul>
-                    </nav>        
+            <Navbar bg="light" variant="light" expand="lg" className='mb-md-5'>
+                <Container>
 
-                </div>
-            </header>
+                    <Navbar.Brand href="/">
+                        <img 
+                            src={logo_black} 
+                            alt="Retour à la page d'accueil"
+                            title="Retour à la page d'accueil"
+                            width='220'
+                            height='120'
+                            >
+                        </img>
+                    </Navbar.Brand>
+                          
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id='basic-navbar-nav'>
+                        <Nav>
+                            <Nav.Link href='/signup' title="Cliquez pour vous inscrire">Inscrivez-vous</Nav.Link>
+                            <Nav.Link href='/login'  title="Cliquez pour vous connecter">Connectez-vous</Nav.Link>
+                        </Nav>    
+                    </Navbar.Collapse>
+
+                </Container>    
+            </Navbar>
+                
+        </header>  
     )
 }
 

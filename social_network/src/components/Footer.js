@@ -1,44 +1,27 @@
 import React from 'react';
-import { useState } from 'react'
-import '../styles/Footer.css'
-import logo_black from '../assets/logo_black.png'
+import {A} from 'hookrouter';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Row, Col } from 'react-bootstrap'
 
 function Footer(){
-
-    const [inputValue, setInputValue]=useState('')
-
-    function handleInput(e) {
-        setInputValue(e.target.value)
-    }
-
-    function handleBlur() {
-        if (!inputValue.includes('@')){
-            alert('Attention, il faut mettre un @ pour valider l\'email')
-        }
-    }
    
     return(
-        <footer className='gpm_footer'>
-
-            <div className='gpm_footer_logo'>
-
-                <img src={logo_black} alt='Groupomania logo' title='Groupomania logo' className='footer_logo'></img>
-
-            </div>
-
-            <div className='gpm_contact'>
-                <p>Un problème ? Le support technique vous aide !</p> 
-
-                <input
-                    type='email'
-                    placeholder="Entrez votre email pro."
-                    onChange={handleInput}
-                    value={inputValue}
-                    onBlur={handleBlur} />
-                <button className='btn_submit' title='Cliquez pour que le support vous recontacte' onClick={() => alert(`${inputValue} a bien été envoyé au support technique`)}> Envoi </button>
-                
-            </div>
-
+        <footer className='fixed-bottom' style={{backgroundColor:'#f8f9fa', height:'10%'}}>
+            <Container>
+                <Row>
+                    <Col>
+                        <ul className='d-flex flex-column justify-content-start flex-md-wrap flex-md-row justify-content-md-between mt-md-4' style={{margin:'0'}}>
+                            <li><A href="/termes-conditions" aria-label="liens vers A propos" style={{textDecoration:'none'}}>À propos</A></li>      
+                            <li><A href="/termes-conditions" aria-label="liens vers les conditions générales d'utilisation (CGU)" style={{textDecoration:'none'}}>Conditions générales d'utilisation (CGU)</A></li>
+                            <li><A href="/termes-conditions" aria-label="liens vers les mentions légales" style={{textDecoration:'none'}}>Mentions légales</A></li>
+                            <li><A href="/termes-conditions" aria-label="liens vers les politiques de protections des données (RGPD)" style={{textDecoration:'none'}}>Politiques de protections des données (RGPD)</A></li>                                        
+                            <li><A href="/termes-conditions" aria-label="liens vers les cookies" style={{textDecoration:'none'}}>Cookies</A></li>
+                            <li><A href="/faq" aria-label="liens vers la Foire à Question" style={{textDecoration:'none'}}>FAQ</A></li>
+                        </ul>          
+                    </Col>
+                </Row>
+            </Container>
         </footer>
 
     )

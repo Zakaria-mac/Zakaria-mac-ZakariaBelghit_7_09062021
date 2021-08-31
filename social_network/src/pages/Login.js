@@ -1,9 +1,10 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-import Connexion from '../components/Connexion';
+import Connexion from '../components/PostLogin';
 import SignUpBanner from '../components/SignupBanner';
 import Footer from '../components/Footer';
+import PostLogin from '../components/PostLogin';
 
 
 function Login() {
@@ -13,11 +14,17 @@ function Login() {
     
     return(
     <div>
-        <SignUpBanner />
+        <header>
+            <SignUpBanner />
+        </header>
 
-        <Connexion />
-
-        <Footer />
+        <section>
+            <PostLogin />
+        </section>
+        
+        <footer>
+            <Footer />
+        </footer>    
     </div>
 )
 }

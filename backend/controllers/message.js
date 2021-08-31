@@ -6,13 +6,12 @@ exports.createMessage = async (req, res, next) => {
     Le corps de la requête est un objet Message converti en chaine. On l'analyse donc avec JSON.parse() pour obtenir un objet utilisable.
     */
     const messageObject = JSON.parse(req.body.message);
+    
     delete messageObject._id;
 
         try {
         const message = await model.Message.create({
             ...messageObject,
-            likes: 0,
-            dislikes:0,
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         })
             return res.status(201).json({ message })
@@ -20,22 +19,6 @@ exports.createMessage = async (req, res, next) => {
         } catch (error){
             return res.status(400).json({ error }) 
         }
-};
-
-exports.likeMessage = async (req, res, next) => {
-    try{
-
-    } catch(error){
-        return res.status(400).json({ error })
-    }
-};
-
-exports.dislikeMessage = async (req, res, next) => {
-    try{
-
-    } catch(error){
-        return res.status(400).json({ error })
-    }
 };
 
 exports.modifyMessage = async (req, res, next) =>{

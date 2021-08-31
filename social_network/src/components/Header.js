@@ -1,50 +1,43 @@
 import React from 'react';
-import { useState } from 'react';
-import {A} from 'hookrouter';
-import '../styles/Header.css'
-import logo_white from '../assets/logo_white.png'
+import logo_black from '../assets/icon-left-font-monochrome-black.svg'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Nav, Navbar} from 'react-bootstrap'
 
 function Header() {
-    const [infoForm, setInfoForm] = useState('')
     
+    function logOut(){
+        localStorage.clear()
+    }
+
     return(
-        
         <header>
-                <div className='header'>
-                    
-                    <div className='banner'>
-                        <A href='/login/forumspace/'>
-                            <img src={logo_white} className='logo' alt='Logo de Groupomania' title='Cliquez pour plus de contenu'></img>
-                        </A>
-                    </div>
+            <Navbar bg="light" variant="light" expand="lg" className='mb-md-5'>
+                <Container>
 
-                    <div>
-                        <input  className='lookinForInfo'
-                                type='text'
-                                name='lookinForInfo' 
-                                placeholder='Rechercher dans le forum'
-                                value={infoForm}
-                                onChange={(e)=> setInfoForm(e.target.value)}>   
-                        </input>
-                    </div>
+                    <Navbar.Brand href="/user/forum">
+                        <img 
+                            src={logo_black} 
+                            alt="Retour à la page d'accueil"
+                            title="Retour à la page d'accueil"
+                            width='220'
+                            height='120'
+                            >
+                        </img>
+                    </Navbar.Brand>
+                          
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id='basic-navbar-nav'>
+                        <Nav>
+                            <Nav.Link href='/user/forum' title="Cliquez pour retourner au forum">Accueil</Nav.Link>
+                            <Nav.Link href='/user/profile' title="Cliquez pour vous connecter">Profil</Nav.Link>
+                            <Nav.Link href='/' onClick={logOut} title="Cliquez pour vous déconnecter">Déconnection</Nav.Link>
+                        </Nav>    
+                    </Navbar.Collapse>
 
-                    <nav className='navigation_banner'>
-                        <ul className='navigation_choices'>
-                            <li>
-                                <A href='/forumspace/' className='navigation_home'>Accueil</A>
-                            </li>
-                            <li>
-                                <A href='/profile/' className='navigation_profile'>Votre profil</A>
-                            </li>
-                            <li>
-                                <A href='/' className='navigation_logoff'>Déconnection</A>
-                            </li>
-                        </ul>
-                    </nav>        
-
-                </div>
-            </header>
+                </Container>    
+            </Navbar>
+        </header>
     )
 }
 export default Header
