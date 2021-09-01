@@ -18,14 +18,14 @@ function Forum(){
             </header>
 
             <section>
-                <Container>
+                <Container className='d-flex justify-content-center'>
                     <Row>
 
-                    <PostMessage/>
+                    <PostMessage xs={12} className=' mt-5'/>
 
-                    <h2 style={{textAlign:'center'}}className='d-flex justify-content-center mt-5'> Mur des publications </h2>
+                    <h2 style={{textAlign:'center'}} className='mt-5 mb-5'> Mur des publications </h2>
                     
-                    <GetMessages />
+                    <GetMessages className='mb-5'/>
                     </Row>
                 </Container>             
             </section>

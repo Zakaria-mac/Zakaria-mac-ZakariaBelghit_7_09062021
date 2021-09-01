@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container,  Row, Col, Button, Form } from 'react-bootstrap'
 
@@ -19,8 +20,7 @@ function PostLogin() {
         }
     },[alert]);
 
-    const history = useHistory()  
-
+    const history = useHistory()
     function handleSubmit(e){
         e.preventDefault();
 
@@ -34,8 +34,8 @@ function PostLogin() {
             .then((res) => localStorage.setItem('jwt', res.token), 
                     setEmail(''),
                     setPassword(''),
-                    setAlert(true),
-                    history.push('/user/profile')            
+                    setAlert(true), 
+                    history.push('/user/profile')           
             )
             .catch((error) => console.log(error))
     };

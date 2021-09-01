@@ -15,7 +15,8 @@ const storage = multer.diskStorage( {
     filename: (req, file, callback) => {
         const name = file.originalname.split(' ').join['_']; //le but étant de récupérer le nom original du fichier et de supprimer tout type d'espace grâce '_'
         const extension = MIME_TYPES[file.mimetype];
-        callback(null, name + Date.now() + '.' + extension) //on ajoute un Timestamp comme nom de fichier
+        callback(null, `${name}${Date.now()}.${extension}`) //on ajoute un Timestamp comme nom de fichier
+        
     }
 });
 

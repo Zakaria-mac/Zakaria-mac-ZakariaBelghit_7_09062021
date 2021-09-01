@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { FormData } from "formdata-node"
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Form, Row, Col, Button } from 'react-bootstrap'
@@ -24,13 +23,14 @@ function PostMessage(){
 
     function handleSubmit(e){
         e.preventDefault()
+        console.log(e.currentTarget.File)
 
         const formData = new FormData
-        formData.append('name', JSON.stringify(name))
-        formData.append('department', JSON.stringify(department))
-        formData.append('object', JSON.stringify(object))
-        formData.append('message', JSON.stringify(message))
-        formData.append('cover', File);
+        formData.append('message', JSON.stringify({
+            name, department, object, message
+        }))
+        formData.append('image', e.currentTarget.File.files[0]);
+
 
         const postMessage = {
             method: 'POST',
@@ -73,8 +73,8 @@ function PostMessage(){
             <h1 style={{textAlign:'center'}}className='d-flex justify-content-center mb-5 mt-3'>De quoi souhaiteriez-vous discuter ?</h1>
             {alert && <p>Message publié avec succès !</p>}
 
-            <Container>
-                <Form onSubmit={handleSubmit} className='justify-content-center align-content-center'>
+            <Container className='w-75 justify-content-center mb-5'>
+                <Form onSubmit={handleSubmit} className='align-content-center'>
                     <Row> 
                         <Form.Group as={Col} controlId='name'>
                             <Form.Label>Nom et prénom </Form.Label>
@@ -131,6 +131,7 @@ function PostMessage(){
                         <Form.Group as={Col} controlId='name' className='mt-3'>
                             <Form.Label className='mr-4'>&#128206;</Form.Label>
                             <Form.Control
+                                name='File'
                                 type='file'
                                 onChange={handleChangeCover}
                                 value={cover}
