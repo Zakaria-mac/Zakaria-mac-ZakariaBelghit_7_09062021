@@ -16,7 +16,7 @@ function App(){
     '/signup':() => <Signup />,
     '/login':() => <Login />,
     '/user/forum':()=> <Forum />,
-    '/user/profile':()=> <Profile />
+    '/user/profile':()=> <Profile />,
   }
     const match = useRoutes(routes)
 

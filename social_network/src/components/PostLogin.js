@@ -37,6 +37,7 @@ function PostLogin() {
                     setAlert(true), 
                     history.push('/user/profile')           
             )
+            .then(() => document.location.reload())
             .catch((error) => console.log(error))
     };
 

@@ -7,6 +7,7 @@ import { Container, Row, Col, Card, Button} from 'react-bootstrap'
 function GetMessages(){
 
     const [messageList, setMessageList] = useState([]);
+    const [updateMessage, setUpdateMessage] = useState([])
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);   
 
@@ -30,19 +31,24 @@ function GetMessages(){
             )
     }, []);
 
-    function handleModify(e){
-        e.preventDefault();
+    function handleModify(id){
+
+        const formData = new FormData
+        formData.append('message', JSON.stringify({
+           messageList
+        }))
 
         const modifyData = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
-            body: JSON.stringify({ messageList })
+            body: FormData 
         };
-        fetch('http://localhost:3000/api/messages/:id', modifyData)
+        fetch(`http://localhost:3000/api/messages/${id}`, modifyData)
             .then(res => res.json())
             .then(() => 
-                setMessageList(''))
+                setUpdateMessage('')) 
+            .then(() => document.location.reload())
     };
 
     function handleDelete(id){
@@ -83,7 +89,7 @@ function GetMessages(){
                                             {data.message} 
                                         </Card.Text>
                                         <Card.Img className='mt-3' variant='bottom' src={data.cover} alt='Images publication'></Card.Img>
-                                        <Button className='mt-3 btn-sm' onClick={() => handleModify(data.id)}> Modifier </Button>
+                                        <Button className='mt-3 btn-sm' onClick={(e) => handleModify(data.id)}> Modifier </Button>
                                         <Button variant='danger btn-sm' className='mt-3 d-flex' onClick={() => handleDelete(data.id)}>Supprimer</Button>    
                                         </Card.Body>
                                     </Card>

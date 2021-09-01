@@ -23,7 +23,6 @@ function PostMessage(){
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(e.currentTarget.File)
 
         const formData = new FormData
         formData.append('message', JSON.stringify({
@@ -46,8 +45,9 @@ function PostMessage(){
                     setObject(''),
                     setMessage(''),
                     setCover(''),
-                    setAlert(true)
+                    setAlert(true),
             )
+            .then(()=>document.location.reload())
             .catch((error) => console.log(error))
     }
 

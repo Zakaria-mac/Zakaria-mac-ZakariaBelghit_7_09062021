@@ -25,10 +25,12 @@ exports.modifyMessage = async (req, res, next) => {
     try {
 
         const messageObject = req.file ?
+        
             {
                 ...JSON.parse(req.body.message),
                 cover: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
             } : { ...req.body }
+            console.log(messageObject)
 
         const { updated } = await model.Message.update(messageObject, {
             where: { id: req.params.id }
@@ -42,7 +44,7 @@ exports.modifyMessage = async (req, res, next) => {
         }
         throw new Error('Message non trouvé')
     } catch (error) {
-        return res.status(400).json({ error })
+        console.log(error)
     }
 };
 
@@ -55,7 +57,7 @@ exports.deleteMessage = async (req, res, next) => {
         const filename = deletedMessage.cover?.split('/images')[1];
         fs.unlink(`images/${filename}`, (err) => { 
             if(err){
-                console.log('Message existe pas')
+                console.log('Le message n\'existe pas')
             }  
         }) 
             model.Message.destroy({

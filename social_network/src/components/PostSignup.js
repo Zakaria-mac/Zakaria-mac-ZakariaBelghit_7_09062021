@@ -35,8 +35,9 @@ function PostSignup(){
                 setEmail(''),
                 setPassword(''),
                 setAlert(true),
-                history.push('/user/profile')
+                history.push('/login')           
             )
+            .then(() => document.location.reload())
             .catch((error) => console.log(error))
 
     };
