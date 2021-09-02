@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router'
+import { useHistory } from 'react-router-dom';
 
 import Header from '../components/Header';
 
@@ -19,6 +21,7 @@ function UpdateMessage({ name, setName, department, setDepartment, object, setOb
     },[alert])
 
     function handleModify(e, id){
+       
         e.preventDefault()
 
         const formData = new FormData
@@ -72,7 +75,7 @@ function UpdateMessage({ name, setName, department, setDepartment, object, setOb
             {alert && <p>Message modifié avec succès !</p>}
 
             <Container className='w-75 justify-content-center mb-5'>
-                <Form onSubmit={(id)=> handleModify(id)} className='align-content-center'>
+                <Form onSubmit={()=> handleModify()} className='align-content-center'>
                     <Row> 
                         <Form.Group as={Col} controlId='name'>
                             <Form.Label>Nom et prénom </Form.Label>

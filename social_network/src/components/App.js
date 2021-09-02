@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRoutes } from 'hookrouter'
 
-
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import Home from '../pages/Home'
@@ -10,7 +9,7 @@ import Profile from '../pages/Profile'
 import UpdateMessage from '../pages/UpdateMessage'
 
 
-function App(id){
+function App(){
 
     const [name, setName] = useState('')
     const [department, setDepartment] = useState('')
@@ -20,6 +19,7 @@ function App(id){
     const [messageList, setMessageList] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false); 
     const [error, setError] = useState(null);   
+   
 
   const routes = {
     '/':()=> <Home />,
@@ -36,7 +36,7 @@ function App(id){
                           error={error} setError={setError}
                           />,
     '/user/profile':()=> <Profile />,
-    '/user/forum/message/:id':() => <UpdateMessage 
+    '/user/forum/message/:id':({id}) => <UpdateMessage id={id}
                                       name={name} setName={setName}
                                       department={department} setDepartment={setDepartment}
                                       object={object} setObject={setObject}

@@ -39,6 +39,7 @@ function GetMessages({ messageList, setMessageList, isLoaded, setIsLoaded, error
             .then(() => document.location.reload())
     };
 
+    
     const history = useHistory()
 
     function handleOneMessage(id){
