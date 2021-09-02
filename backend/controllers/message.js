@@ -24,27 +24,23 @@ exports.createMessage = async (req, res, next) => {
 exports.modifyMessage = async (req, res, next) => {
     try {
 
+        const message = await model.Message.findOne({
+            where: { id: req.params.id }
+        });
+
         const messageObject = req.file ?
         
             {
                 ...JSON.parse(req.body.message),
                 cover: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
             } : { ...req.body }
-            console.log(messageObject)
 
-        const { updated } = await model.Message.update(messageObject, {
-            where: { id: req.params.id }
-        });
+            await model.Message.update({where :{ id: req.params.id }}, {...messageObject, where:{ id:req.params.id }})
+                .then(() => res.status(200).json({ message : 'Message modifé'}))
+                .catch(error => res.status(400).json({ error }))
 
-        if (updated) {
-            const updatedMessage = await model.Message.findOne({
-                where: { id: req.params.id }
-            })
-            return res.status(200).json({ updatedMessage })
-        }
-        throw new Error('Message non trouvé')
     } catch (error) {
-        console.log(error)
+        return console.log(error)
     }
 };
 
@@ -66,9 +62,20 @@ exports.deleteMessage = async (req, res, next) => {
         return res.status(200).json({ message: 'Message supprimé' })
     }
     catch (error) {
-        console.log(error)
+        return res.status(400).json({ error })
     }
 };
+
+exports.getOneMessage = async (req, res, next) =>{
+    try{
+        const message = await model.Message.findOne({
+            where:{ id: req.params.id }}) 
+            return res.status(200).json({ message })
+    }
+    catch (error){
+        return res.status(400).json({ error })
+    }
+}
 
 exports.getAllMessages = async (req, res, next) => {
     try {

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+import Header from '../components/Header';
 
-function PostMessage({name, setName, department, setDepartment, object, setObject, message, setMessage, cover, setCover }){
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+
+function UpdateMessage({ name, setName, department, setDepartment, object, setObject, message, setMessage, cover, setCover, messageList, setMessageList, isLoaded, setIsLoaded, error, setError  }){
 
     const [alert, setAlert] = useState(false)  
 
@@ -16,60 +18,61 @@ function PostMessage({name, setName, department, setDepartment, object, setObjec
         }
     },[alert])
 
-    function handleSubmit(e){
+    function handleModify(e, id){
         e.preventDefault()
 
         const formData = new FormData
-        formData.append('message', JSON.stringify({
+        formData.append('messageObject', JSON.stringify({
             name, department, object, message
         }))
         formData.append('image', e.currentTarget.File.files[0]);
 
-
-        const postMessage = {
-            method: 'POST',
+        const modifyData = {
+            method: 'PUT',
             headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
-            body: formData,
-        };  
-        delete postMessage.headers['Content-Type'];
-        fetch('http://localhost:3000/api/messages', postMessage)
+            body: formData
+        };
+        delete modifyData.headers['Content-Type'];
+        fetch(`http://localhost:3000/api/messages/${id}`, modifyData)
+            .then(console.log())
             .then(res => res.json())
-            .then(() =>
+            .then(() => 
                     setName(''),
                     setDepartment(''),
                     setObject(''),
                     setMessage(''),
                     setCover(''),
-                    setAlert(true),
-            )
-            .then(()=>document.location.reload())
+                    setAlert(true)) 
             .catch((error) => console.log(error))
-    }
+        };
 
-    function handleChangeName(event){
-        setName(event.target.value);
-    };
-    function handleChangeDepartment(event){
-        setDepartment(event.target.value);
-    };
-    function handleChangeOject(event){
-        setObject(event.target.value);
-    };
-    function handleChangeMessage(event){
-        setMessage(event.target.value);
-    };
-    function handleChangeCover(event){
-        setCover(event.target.value);
-    };
+        function handleChangeName(event){
+            setName(event.target.value);
+        };
+        function handleChangeDepartment(event){
+            setDepartment(event.target.value);
+        };
+        function handleChangeOject(event){
+            setObject(event.target.value);
+        };
+        function handleChangeMessage(event){
+            setMessage(event.target.value);
+        };
+        function handleChangeCover(event){
+            setCover(event.target.value);
+        };
+
 
     return(
         <div>
+
+            <Header />
         
-            <h1 style={{textAlign:'center'}}className='d-flex justify-content-center mb-5 mt-3'>De quoi souhaiteriez-vous discuter ?</h1>
-            {alert && <p>Message publié avec succès !</p>}
+            <h1 style={{textAlign:'center'}}className='d-flex justify-content-center mb-5 mt-3'>Modifiez votre message ici ! &#128512; </h1>
+            {alert && <p>Message modifié avec succès !</p>}
 
             <Container className='w-75 justify-content-center mb-5'>
-                <Form onSubmit={handleSubmit} className='align-content-center'>
+                <Form onSubmit={(id)=> handleModify(id)} className='align-content-center'>
                     <Row> 
                         <Form.Group as={Col} controlId='name'>
                             <Form.Label>Nom et prénom </Form.Label>
@@ -143,9 +146,9 @@ function PostMessage({name, setName, department, setDepartment, object, setObjec
                     </Row>
                 </Form>
             </Container>                   
+
         </div>
-      
+       
     )
 }
-
-export default PostMessage
+export default UpdateMessage;
