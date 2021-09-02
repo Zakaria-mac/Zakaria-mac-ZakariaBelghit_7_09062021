@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router'
-import { useHistory } from 'react-router-dom';
 
 import Header from '../components/Header';
 
@@ -20,8 +19,31 @@ function UpdateMessage({ name, setName, department, setDepartment, object, setOb
         }
     },[alert])
 
+    const {id} = useParams()
+    
+    useEffect(() => {
+        
+        const getData = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}` },
+        }
+        fetch(`http://localhost:3000/api/messages/${id}`, getData)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    setIsLoaded(true)
+                    setMessageList(data.message)
+                },
+                (error) => {
+                    setIsLoaded(true)
+                    setError(error)
+                }
+            )
+    }, []);
+
+
     function handleModify(e, id){
-       
         e.preventDefault()
 
         const formData = new FormData
@@ -37,7 +59,6 @@ function UpdateMessage({ name, setName, department, setDepartment, object, setOb
         };
         delete modifyData.headers['Content-Type'];
         fetch(`http://localhost:3000/api/messages/${id}`, modifyData)
-            .then(console.log())
             .then(res => res.json())
             .then(() => 
                     setName(''),

@@ -20,7 +20,7 @@ function App(){
     const [isLoaded, setIsLoaded] = useState(false); 
     const [error, setError] = useState(null);   
    
-
+    
   const routes = {
     '/':()=> <Home />,
     '/signup':() => <Signup />,
@@ -42,6 +42,8 @@ function App(){
                                       object={object} setObject={setObject}
                                       message={message} setMessage={setMessage}
                                       cover={cover} setCover={setCover}
+                                      messageList={messageList} setMessageList={setMessageList}
+                                      isLoaded={isLoaded} setIsLoaded={setIsLoaded}
                                       />
   }
     const match = useRoutes(routes)
